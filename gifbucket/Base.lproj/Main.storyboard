@@ -1,0 +1,979 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8YX-ce-x5E">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--IMPORT-->
+        <scene sceneID="Uob-d3-Jlw">
+            <objects>
+                <viewController id="uQX-5I-Fay" customClass="ImportToCategoryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SQ8-qO-sLr"/>
+                        <viewControllerLayoutGuide type="bottom" id="QCF-LM-xvr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fo9-3S-hKq">
+                        <rect key="frame" x="0.0" y="64" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFY-1e-ihG">
+                                <rect key="frame" x="43" y="109" width="234" height="2"/>
+                            </progressView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SI8-kL-Qmg">
+                                <rect key="frame" x="0.0" y="186" width="320" height="162"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="uQX-5I-Fay" id="JnT-Kb-foD"/>
+                                    <outlet property="delegate" destination="uQX-5I-Fay" id="n0u-v2-b7G"/>
+                                </connections>
+                            </pickerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3Y-P1-p1h">
+                                <rect key="frame" x="43" y="8" width="234" height="204"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="36" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qT-PK-xRW">
+                                <rect key="frame" x="60" y="327" width="200" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Save to Bucket">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="importButton:" destination="uQX-5I-Fay" eventType="touchUpInside" id="g76-T0-FEw"/>
+                                    <segue destination="8YX-ce-x5E" kind="presentation" identifier="importSegue" id="L4K-wt-Lg2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJZ-Sg-8Ks">
+                                <rect key="frame" x="264" y="327" width="40" height="40"/>
+                                <state key="normal" backgroundImage="redflag40.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="flagButton:" destination="uQX-5I-Fay" eventType="touchUpInside" id="8LR-v4-lp5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="IMPORT" id="S2A-TS-td9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="ebX-zv-vp4">
+                            <connections>
+                                <segue destination="8YX-ce-x5E" kind="presentation" identifier="cancelledImport" id="i1R-Tb-mJw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="categoryPicker" destination="SI8-kL-Qmg" id="iEt-Ls-gAT"/>
+                        <outlet property="flagButton" destination="gJZ-Sg-8Ks" id="TaP-7T-cKB"/>
+                        <outlet property="importButton" destination="1qT-PK-xRW" id="rf6-4Q-LYV"/>
+                        <outlet property="importedGIFImageView" destination="E3Y-P1-p1h" id="6nl-n0-inl"/>
+                        <outlet property="progressView" destination="sFY-1e-ihG" id="TF4-75-6ZL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ex-eq-2wu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3622.5" y="-546.12676056338023"/>
+        </scene>
+        <!--AgreementViewController-->
+        <scene sceneID="NSc-vM-dO1">
+            <objects>
+                <viewController storyboardIdentifier="AgreementViewController" title="AgreementViewController" id="aCc-oD-K5b" customClass="AgreementViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sqO-3M-iZi"/>
+                        <viewControllerLayoutGuide type="bottom" id="sqf-ZZ-3mc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W15-dM-AOp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kjB-SS-sck">
+                                <rect key="frame" x="17" y="83" width="567" height="465"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Gif Bucket End User License Agreement (EULA)
+Effective October 31, 2014
+This End-User License Agreement (“Agreement” or “EULA”) governs your use of the “Gif Bucket” software (“Software”) and Services (described in Section 5) provided by Gif Bucket designed to operate on your iPhone (your “Apple Computing Device”). The Software is licensed, not sold.
+You, the end-user of the Software, acknowledge that the Agreement is entered into by and between Gif Bucket and its owner and you and not with Apple, Inc. or its subsidiaries (“Apple”). You also acknowledge that Apple has no obligation whatsoever to furnish any maintenance and support services with respect to the Software.
+Your use of the Software constitutes your acceptance of the terms of this Agreement, which may be amended from time to time by Gif Bucket and its owner. Gif Bucket and its owner reserves the right to change or modify this Agreement or any other Gif Bucket policies related to use of the Software or Services at any time, and at his / her sole discretion. Continued use of the Software and Services following the posting of these changes or modifications will constitute acceptance of such changes or modifications.
+1. License.
+Subject to the terms of this Agreement, Gif Bucket and its owner grants to you a nontransferable, nonexclusive, royalty-free, fully paid, worldwide license (without the right to sublicense) to install and use one copy of the Software, in executable object code format only, solely on your Apple Computing Device.
+2. License Restrictions.
+You agree to the following license restrictions: (a) to use the Software solely for your personal, noncommercial use; (b) to not duplicate, copy or distribute the Software except as necessary to use it on your Apple Computing Device; (c) to not license, sell, rent, lease, transfer, assign, distribute, host, outsource, disclose or otherwise commercially exploit the Software or make the Software available to any third party; (d) to not copy the written materials accompanying the Software; (e) to not modify, translate, make derivative works of, disassemble, reverse compile or reverse engineer any part of the Software in order to build a similar or competitive product or service; and (f) to preserve all copyright and other proprietary rights notices on the Software and all copies thereof.
+3. Copyrights And Trademarks.
+You acknowledge that no title to the intellectual property in the Software is transferred to you. You further acknowledge that title and full ownership rights to the Software will remain the exclusive property of Gif Bucket and its owner and/or its suppliers, and you will not acquire any rights to the Software, except as expressly set forth above. All title and copyrights in and to the Software (including but not limited to any images, photographs, animations, video, audio, music, text and “applets,” incorporated into the Software), the accompanying printed materials, and any copies of the Software, are owned by Gif Bucket and its owner or its suppliers.
+This Software is protected by copyright laws, international copyright treaties, other intellectual property laws and treaties.
+iPhone, iPod touch and iPad are trademarks of Apple, Inc., registered in the U.S. and other countries. All other trademarks appearing in the Software, Services or Agreement are the property of their respective owners.
+4. Updates Or Upgrades To The Software.
+Gif Bucket and its owner are not obligated to provide any updates or upgrades to the Software.
+5. Services; Third-Party Materials.
+A. Generally.
+The Software may enable access to Third-Party services and web sites (collectively and individually, “Services”). Use of the Services may require Internet access and you accept additional terms of service by making use of these Internet-accessible Services.
+You understand that by using any of the Services, you may encounter content that may be deemed offensive, indecent, or objectionable, which content may or may not be identified as having explicit language, and that the Third Parties’ results of any search or entering of a particular URL may automatically and unintentionally generate links or references to objectionable material. You agree to use the Services at your sole risk and that Gif Bucket and its owner shall not have any liability to you for content that may be found to be offensive, indecent, or objectionable. You acknowledge that the content you encounter does not necessarily reflect the opinions or policies of Gif Bucket and its owner.
+Certain Services may display, include or make available content, data, information, applications or materials from (“Third-Party Materials”) or provide links to certain Third-Party web sites. By using the Services, you acknowledge and agree that Gif Bucket and its owner are not responsible for examining or evaluating the content, accuracy, completeness, timeliness, validity, copyright compliance, legality, decency, quality or any other aspect of such Third-Party Materials or web sites. Gif Bucket and its owner does not warrant or endorse and does not assume and will not have any liability or responsibility to you or any other person for any Third-Party Services, Third-Party Materials or web sites, or for any other materials, products, or services of Third Parties. Third-Party Materials and links to other web sites are provided solely as a convenience to you. Location data provided by any of the Services is for basic navigational purposes only and is not intended to be relied upon in situations where precise location information is needed or where erroneous, inaccurate or incomplete location data may lead to death, personal injury, property or environmental damage. Neither Gif Bucket and its owner, nor any of its content providers, guarantees the availability, accuracy, completeness, reliability, or location data displayed by any of the Services.
+You agree that the Services contain proprietary content, information and material that is protected by applicable intellectual property and other laws, including but not limited to copyright, and that you will not use such proprietary content, information or materials in any way whatsoever except for permitted use of the Services. No portion of the Services may be reproduced in any form or by any means. You agree not to modify, rent, lease, loan, sell, distribute, or create derivative works based on the Services, in any manner, and you shall not exploit the Services in any unauthorized way whatsoever, including but not limited to, by trespass or burdening network capacity.
+You further agree not to use the Services in any manner to harass, abuse, stalk, threaten, defame or otherwise infringe or violate the rights of any other party, and that Gif Bucket and its owner are not in any way responsible for any such use by you, nor for any harassing, threatening, defamatory, offensive or illegal messages or transmissions that you may receive as a result of using any of the Services.
+In addition, Third-Party Services and Third-Party Materials that may be accessed from, displayed on or linked to from the Apple Computing Device are not available in all languages or in all countries. Gif Bucket and its owner make no representation that such Services and Materials are appropriate or available for use in any particular location. To the extent you choose to access such Services or Materials, you do so at your own initiative and are responsible for compliance with any applicable laws, including but not limited to, applicable local laws.
+Gif Bucket and its owner reserve the right to change, suspend, remove, terminate, or disable access to any Services for any or no reason at any time without notice. In no event will Gif Bucket and its owner be liable for the removal of, termination, or disabling of access to any such Services. Gif Bucket and its owner may also impose limits on the use of or access to certain Services, in any case, and without notice or liability.
+6. No Warranty.
+You expressly acknowledge and agree that use of the Software is at your sole risk and that the entire risk as to satisfactory quality, performance, accuracy and effort is with you. To the maximum extent permitted by applicable law, the Software and Services performed or provided by the Software (“Services”) are provided “AS IS” and “AS AVAILABLE”, with all faults and without warranty of any kind, and Gif Bucket and its owner hereby disclaims all warranties and conditions with respect to the Software and Services, either express, implied or statutory, including, but not limited to, the implied warranties and/or conditions of merchantability, of satisfactory quality, of fitness for a particular purpose, of accuracy, of quiet enjoyment, and non-infringement of third party rights.
+Gif Bucket and its owner do not warrant against interference with your enjoyment of the Software, that the functions contained in, or Services performed or provided by, the Software will meet your requirements, that the operation of the Software or Services will be uninterrupted or error-free, or that defects in the Software or Services will be corrected. Gif Bucket and its owner assumes no responsibility for any error, omission, interruption, deletion, defect, delay in operation or transmission, communications line failure, theft or destruction or unauthorized access to, or alteration of, any communication. Gif Bucket and its owner are not responsible for any problems or technical malfunction of any telephone network or lines, computer online systems, servers or providers, computer equipment, software, failure of any email or players due to technical problems or traffic congestion on the Internet or on any of the Services or combination thereof, including any injury or damage to users or to any person’s computer related to or resulting from participation or downloading materials in connection with the Gif Bucket and its owner Services. Should the Software or Services prove defective, you assume the entire cost of all necessary servicing, repair or correction.
+No oral or written information or advice given by Gif Bucket and its owner or its authorized representative shall create a warranty.
+Under no circumstances shall Gif Bucket and its owner be responsible for any loss or damage, including personal injury or death, resulting from use of the Services, from any content provided on or through the Services, or from the conduct of any users of the Services, whether online or offline.
+Gif Bucket and its owner cannot guarantee and does not promise any specific results from use of the Gif Bucket and its owner Services.
+Some jurisdictions do not allow the exclusion of implied warranties or limitations on applicable statutory rights of a consumer, so the above exclusion and limitations may not apply to you.
+7. Limitation Of Liability.
+To the extent not prohibited by law, in no event shall Gif Bucket and its owner be liable for personal injury, or any incidental, special, indirect or consequential damages whatsoever, including, without limitation, damages for loss of profits, loss of data, business interruption or any other commercial damages or losses, arising out of or related to your use or inability to use the Software or Services, however caused, regardless of the theory of liability (contract, tort or otherwise) and even if Gif Bucket and its owner have been advised of the possibility of such damages. In no event shall Gif Bucket and its owner’s total liability to you for all damages (other than as may be required by applicable law in cases involving personal injury) exceed the amount price paid for the Software, if any. The foregoing limitations will apply even if the above stated remedy fails of its essential purpose.
+Some jurisdictions do not allow the limitation of liability for personal injury, or of incidental or consequential damages, so this limitation may not apply to you.
+8. Indemnification By You.
+You agree to indemnify and hold Gif Bucket and its owner, its subsidiaries, and affiliates, and their respective officers, agents, partners and employees, harmless from any loss, liability, claim or demand, including reasonable attorney’s fees, made by any third party due to or arising out of your use of the Software or Services in violation of this Agreement, arising from a breach of this Agreement, any breach in your representations or warranties, or if any photograph you upload to the Services causes Gif Bucket and its owner to be liable to another.
+9. Export Control.
+You may not use or otherwise export or re-export the Software except as authorized by United States law and the laws of the jurisdiction in which the Software was obtained. In particular, but without limitation, the Software may not be exported or re-exported (a) into any U.S. embargoed countries or (b) to anyone on the U.S. Treasury Department’s list of Specially Designated Nationals or the U.S. Department of Commerce Denied Person’s List or Entity List. By using the Software, you represent and warrant that you are not located in any such country or on any such list. You also agree that you will not use these products for any purposes prohibited by United States law, including, without limitation, the development, design, manufacture or production of nuclear, missiles, or chemical or biological weapons.
+10. Injunctive Relief.
+Gif Bucket and its owner has the right to seek injunctive relief to enforce this Agreement or to stop or prevent an infringement of proprietary or other third-party rights.
+11. Choice Of Law, Jurisdiction And Venue.
+You agree that any disputes between Gif Bucket and its owner and you shall be resolved under the substantive law of the state of Minnesota (exclusive of its choice of law provisions). The Convention for the International Sale of Goods shall not apply. You and Gif Bucket and its owner agree to submit all disputes to the exclusive jurisdiction of the state and federal courts located in Minneapolis, MN, USA.
+12. Third-Party Beneficiary.
+Apple is a third-party beneficiary to this Agreement. Upon your acceptance of this Agreement, Apple will have the right (and will be deemed to have accepted the right) to enforce this Agreement against you as a third-party beneficiary of this Agreement.
+13. Section Titles.
+The section titles in this Agreement are for convenience only and have no legal or contractual effect.
+14. Non-Waiver.
+Gif Bucket and its owner’s failure to exercise or enforce any right or provision of this Agreement shall not operate as a waiver of such right or provision.
+15. Severability.
+The parties agree that each provision of this Agreement is intended to be construed to be enforceable to the fullest extent possible. If any provision or part of a provision of this Agreement is held to be unlawful, void, or unenforceable, that provision or part of the provision shall be deemed severable from this Agreement and not affect the validity and enforceability of any remaining provisions.
+16. Assignment.
+You may not assign your rights under this Agreement to any third party; Gif Bucket and its owner may assign your rights under this Agreement without condition.
+17. Product Questions, Comments, Claims And Contact Information.
+Gif Bucket and its owner, not Apple, are responsible for addressing any questions, comments or claims relating to the Software and/or your use of the Software. If you have any comments or questions, please contact Gif Bucket and its owner at the following e-mail address: gifbucketcs@gmail.com.
+18. Termination.
+The Software license is effective until terminated by you or Gif Bucket and its owner. Your rights under this license will terminate automatically without notice from Gif Bucket and its owner if you fail to comply with any term(s) of this license. Upon termination of the license, you shall cease all use of the Software, and destroy all copies, full or partial, of the Software.
+19. Consent To Use Of Data.
+You agree that Gif Bucket and its owner may collect and use technical data and related information, including but not limited to technical information about your device, system and application software, and peripherals, that is gathered periodically to facilitate the provision of software updates, product support and other services to you (if any) related to the Software. Gif Bucket and its owner may use this information, as long as it is in a form that does not personally identify you, to improve its products or to provide services or technologies to you.
+You may choose to report inappropriate or broken links displayed through one of the Services in Gif Bucket. Doing so will require the use of a personal email address. This email address will not be distributed, released, or sold to any 3rd party.
+20. Agreement.
+This Agreement constitutes the entire agreement between you and Gif Bucket and its owner regarding the use of the Software and supersedes any prior or contemporaneous understandings and agreements between you and Gif Bucket and its owner related to its subject matter.</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="no7-hI-1og">
+                                <rect key="frame" x="170" y="20" width="261" height="60"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1Z-KN-gdh">
+                                <rect key="frame" x="206" y="550" width="188" height="30"/>
+                                <state key="normal" title="I Agree to the license terms">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="8YX-ce-x5E" kind="presentation" id="VTC-C7-HqV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kjB-SS-sck" firstAttribute="leading" secondItem="W15-dM-AOp" secondAttribute="leadingMargin" constant="1" id="3Ql-3f-9yn"/>
+                            <constraint firstItem="kjB-SS-sck" firstAttribute="trailing" secondItem="W15-dM-AOp" secondAttribute="trailingMargin" id="3ie-ts-chp"/>
+                            <constraint firstAttribute="centerX" secondItem="J1Z-KN-gdh" secondAttribute="centerX" id="7NZ-3h-vlU"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="kjB-SS-sck" secondAttribute="bottom" constant="52" id="Axu-P8-FHY"/>
+                            <constraint firstItem="kjB-SS-sck" firstAttribute="trailing" secondItem="W15-dM-AOp" secondAttribute="trailingMargin" constant="1" id="B2S-pc-7zk"/>
+                            <constraint firstAttribute="centerX" secondItem="J1Z-KN-gdh" secondAttribute="centerX" id="EZV-bC-Erp"/>
+                            <constraint firstItem="kjB-SS-sck" firstAttribute="leading" secondItem="W15-dM-AOp" secondAttribute="leadingMargin" constant="1" id="Fit-XI-aoR"/>
+                            <constraint firstItem="J1Z-KN-gdh" firstAttribute="top" secondItem="kjB-SS-sck" secondAttribute="bottom" constant="2" id="GWh-1y-tsz"/>
+                            <constraint firstItem="sqf-ZZ-3mc" firstAttribute="top" secondItem="J1Z-KN-gdh" secondAttribute="bottom" constant="20" id="LFV-gT-LCq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kjB-SS-sck" secondAttribute="trailing" constant="2" id="Q7v-tB-tZH"/>
+                            <constraint firstItem="kjB-SS-sck" firstAttribute="top" secondItem="no7-hI-1og" secondAttribute="bottom" constant="3" id="Qcq-CJ-dOt"/>
+                            <constraint firstItem="kjB-SS-sck" firstAttribute="top" secondItem="no7-hI-1og" secondAttribute="bottom" constant="3" id="SDe-gX-eI1"/>
+                            <constraint firstItem="kjB-SS-sck" firstAttribute="leading" secondItem="W15-dM-AOp" secondAttribute="leadingMargin" constant="1" id="SUg-TR-bHc"/>
+                            <constraint firstAttribute="centerX" secondItem="no7-hI-1og" secondAttribute="centerX" id="cM0-zO-SNe"/>
+                            <constraint firstItem="no7-hI-1og" firstAttribute="top" secondItem="sqO-3M-iZi" secondAttribute="bottom" id="cQr-1e-Rzx"/>
+                            <constraint firstAttribute="centerX" secondItem="no7-hI-1og" secondAttribute="centerX" id="d80-W8-VlV"/>
+                            <constraint firstItem="J1Z-KN-gdh" firstAttribute="top" secondItem="kjB-SS-sck" secondAttribute="bottom" constant="2" id="jjl-Hr-if9"/>
+                            <constraint firstItem="kjB-SS-sck" firstAttribute="trailing" secondItem="W15-dM-AOp" secondAttribute="trailingMargin" id="ltl-wz-zKd"/>
+                            <constraint firstItem="kjB-SS-sck" firstAttribute="top" secondItem="W15-dM-AOp" secondAttribute="topMargin" constant="83" id="mNb-mo-TrO"/>
+                            <constraint firstItem="sqf-ZZ-3mc" firstAttribute="top" secondItem="J1Z-KN-gdh" secondAttribute="bottom" constant="20" id="yRW-KX-zn6"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3ie-ts-chp"/>
+                                <exclude reference="B2S-pc-7zk"/>
+                                <exclude reference="Fit-XI-aoR"/>
+                                <exclude reference="Q7v-tB-tZH"/>
+                                <exclude reference="Qcq-CJ-dOt"/>
+                                <exclude reference="SDe-gX-eI1"/>
+                                <exclude reference="SUg-TR-bHc"/>
+                                <exclude reference="cM0-zO-SNe"/>
+                                <exclude reference="EZV-bC-Erp"/>
+                                <exclude reference="GWh-1y-tsz"/>
+                                <exclude reference="jjl-Hr-if9"/>
+                                <exclude reference="yRW-KX-zn6"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="bucketLogo" destination="no7-hI-1og" id="rSH-EL-PyO"/>
+                        <outlet property="button" destination="J1Z-KN-gdh" id="5kY-8I-xdS"/>
+                        <outlet property="textView" destination="kjB-SS-sck" id="4bB-Cu-xqQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RNm-dn-mnx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1155" y="953"/>
+        </scene>
+        <!--New Bucket View Controller-->
+        <scene sceneID="Rxo-HM-usN">
+            <objects>
+                <viewController id="3fi-bn-gEB" customClass="NewBucketViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BP7-gw-yib"/>
+                        <viewControllerLayoutGuide type="bottom" id="tdE-KY-KCn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9ve-85-Oau">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lu3-WL-Mgz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCell" rowHeight="90" id="4Cv-aM-vhl" customClass="NewBucketTableViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="278" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Cv-aM-vhl" id="Qbe-yU-5Af">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FaZ-ik-ntB">
+                                                    <rect key="frame" x="8" y="9" width="73" height="73"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duU-P4-D5R">
+                                                    <rect key="frame" x="89" y="16" width="176" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRM-zX-W6z">
+                                                    <rect key="frame" x="248" y="25" width="64" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <state key="normal" title="Purchase">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="purchaseButton:" destination="4Cv-aM-vhl" eventType="touchUpInside" id="RLe-DO-b42"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtI-LU-uJn">
+                                                    <rect key="frame" x="273" y="56" width="39" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dgd-dL-ZbA">
+                                                    <rect key="frame" x="89" y="47" width="176" height="39"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bucketIconImageView" destination="FaZ-ik-ntB" id="sJD-dd-InF"/>
+                                            <outlet property="descriptionLabel" destination="Dgd-dL-ZbA" id="5f7-z5-CMC"/>
+                                            <outlet property="priceLabel" destination="ZtI-LU-uJn" id="q3e-gS-7jr"/>
+                                            <outlet property="titleLabel" destination="duU-P4-D5R" id="AD1-yF-QFP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3fi-bn-gEB" id="HA7-11-fFg"/>
+                                    <outlet property="delegate" destination="3fi-bn-gEB" id="688-zM-cP8"/>
+                                </connections>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8YE-T6-Ghc">
+                                <rect key="frame" x="30" y="456" width="260" height="60"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHk-hh-PgC">
+                                <rect key="frame" x="30" y="432" width="260" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7B-Ls-Z3S">
+                                <rect key="frame" x="68" y="400" width="185" height="30"/>
+                                <state key="normal" title="Restore Previous Purchase">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="restoreButtonAction:" destination="3fi-bn-gEB" eventType="touchUpInside" id="tlO-UL-Bm1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Mh6-aP-iY0"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="numberOfBucketsAvailibleLabel" destination="VHk-hh-PgC" id="pjn-4Z-6IF"/>
+                        <outlet property="productsTableView" destination="Lu3-WL-Mgz" id="XfS-SO-hRU"/>
+                        <outlet property="restoreButton" destination="J7B-Ls-Z3S" id="n4t-nQ-OQA"/>
+                        <outlet property="thankYouImageView" destination="8YE-T6-Ghc" id="KjU-s0-Mdc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="36z-2h-SHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1912.5" y="953.87323943661966"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Vex-rW-GRa">
+            <objects>
+                <tabBarController id="8YX-ce-x5E" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="MXH-sd-bye"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="JQR-rB-NYL">
+                        <rect key="frame" x="0.0" y="431" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="qzu-Rb-7wv" kind="relationship" relationship="viewControllers" id="JGN-3N-D6r"/>
+                        <segue destination="1bZ-mX-omY" kind="relationship" relationship="viewControllers" id="c16-l9-RxH"/>
+                        <segue destination="pu5-1F-wN5" kind="relationship" relationship="viewControllers" id="lSW-jb-kJn"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="247.5" y="190.14084507042253"/>
+        </scene>
+        <!--Bucket Gif View Controller-->
+        <scene sceneID="yFh-vE-Mkw">
+            <objects>
+                <viewController id="Wrk-Qs-lll" customClass="BucketGifViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GC6-Cf-Khg"/>
+                        <viewControllerLayoutGuide type="bottom" id="8OZ-Zz-Kgh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QL2-qi-gyw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="this bucket is empty :(" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abX-g5-ReY" userLabel="emptyBucketLabel">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <accessibility key="accessibilityConfiguration" label="asdfsdaf"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uxc-Lx-BSy">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="WKs-he-QEU">
+                                    <size key="itemSize" width="104" height="104"/>
+                                    <size key="headerReferenceSize" width="0.0" height="3"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="bucketCVC" id="xNc-58-rNE" customClass="BucketCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="67" width="104" height="104"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hcb-WK-HCx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="gifImage" destination="hcb-WK-HCx" id="WAi-aB-f0Q"/>
+                                            <segue destination="wdK-RZ-Kos" kind="show" identifier="toImage" id="9rF-O5-TuT"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1Tg-wa-ya6">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="3"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="Wrk-Qs-lll" id="jVo-Ia-Am0"/>
+                                    <outlet property="delegate" destination="Wrk-Qs-lll" id="QLG-Lq-kWP"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Uxc-Lx-BSy" secondAttribute="trailing" constant="-16" id="1Bc-Li-mbF"/>
+                            <constraint firstItem="Uxc-Lx-BSy" firstAttribute="leading" secondItem="QL2-qi-gyw" secondAttribute="leadingMargin" constant="-16" id="Hxx-62-kmA"/>
+                            <constraint firstAttribute="centerY" secondItem="abX-g5-ReY" secondAttribute="centerY" id="Ogr-dX-03f"/>
+                            <constraint firstItem="Uxc-Lx-BSy" firstAttribute="top" secondItem="QL2-qi-gyw" secondAttribute="topMargin" id="Ppc-Rr-SgY"/>
+                            <constraint firstAttribute="centerX" secondItem="abX-g5-ReY" secondAttribute="centerX" id="o7b-y0-aY0"/>
+                            <constraint firstItem="8OZ-Zz-Kgh" firstAttribute="top" secondItem="Uxc-Lx-BSy" secondAttribute="bottom" id="yVu-cx-Zoq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="DUP-H4-5T5"/>
+                    <connections>
+                        <outlet property="bucketCollectionView" destination="Uxc-Lx-BSy" id="hn3-E2-Vhd"/>
+                        <outlet property="emptyBucketLabel" destination="abX-g5-ReY" id="0CX-qw-VhA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dPA-Ho-hyJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2891" y="190"/>
+        </scene>
+        <!--BucketGIF Image View Controller-->
+        <scene sceneID="wsv-mL-CdF">
+            <objects>
+                <viewController id="wdK-RZ-Kos" customClass="BucketGIFImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lnp-kk-qxd"/>
+                        <viewControllerLayoutGuide type="bottom" id="pAW-Za-iu5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="haq-IQ-Cif">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kb-6g-AMU">
+                                <rect key="frame" x="180" y="410" width="94" height="30"/>
+                                <state key="normal" title="Go Unlimited!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeAdsButtonAction:" destination="wdK-RZ-Kos" eventType="touchUpInside" id="Vhs-x9-tue"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVb-H5-cn5">
+                                <rect key="frame" x="33" y="410" width="88" height="30"/>
+                                <state key="normal" title="Remove Ads">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="freeGameButton:" destination="wdK-RZ-Kos" eventType="touchUpInside" id="F4t-DP-bcR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.039215686274509803" green="0.37647058823529411" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" systemItem="trash" id="pc9-Yn-jpG">
+                            <connections>
+                                <action selector="trashButton:" destination="wdK-RZ-Kos" id="ZzR-U3-bSW"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="acv-JW-nRh"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="freeGameButtonOutlet" destination="wVb-H5-cn5" id="GTv-gV-bcW"/>
+                        <outlet property="removeAdsButtonOutlet" destination="4kb-6g-AMU" id="Iu1-hl-a3n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oO6-o3-dvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3658.125" y="190.14084507042253"/>
+        </scene>
+        <!--reddit.com/r/-->
+        <scene sceneID="0nh-e7-yXW">
+            <objects>
+                <viewController id="Atx-VX-1zs" customClass="HomeSubRedditsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ytz-k3-9J3"/>
+                        <viewControllerLayoutGuide type="bottom" id="XeS-5h-nP2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p9M-jm-O0l">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hVd-jI-6eC">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="469"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="subReddit" id="Um9-EY-EMl">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Um9-EY-EMl" id="5Ca-Sp-g0N">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="6vR-KD-vKr" kind="show" identifier="toReddit" id="UoQ-NT-Z3D"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Atx-VX-1zs" id="im9-lJ-nsf"/>
+                                    <outlet property="delegate" destination="Atx-VX-1zs" id="C6V-Gx-kJN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="reddit.com/r/" id="X6y-wb-IpA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ip5-xC-LWM">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addSubredditButton:" destination="Atx-VX-1zs" id="S4a-YY-Ejn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="subRedditsTableView" destination="hVd-jI-6eC" id="bbH-7w-KWg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zcy-M6-umy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2287.5" y="-1329.9295774647887"/>
+        </scene>
+        <!--Home Reddit Web View Controller-->
+        <scene sceneID="FXI-zu-7gX">
+            <objects>
+                <viewController id="6vR-KD-vKr" customClass="HomeRedditWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jqx-ZB-vRN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Udj-hF-BDU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="soq-Uc-LvR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cnq-eS-oyh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="subviewCell" rowHeight="70" id="oak-vr-rZL" customClass="RedditTableViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oak-vr-rZL" id="6yP-ok-AMy">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTD-nL-ok7">
+                                                    <rect key="frame" x="8" y="5" width="60" height="60"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTF-ga-12x">
+                                                    <rect key="frame" x="121" y="9" width="158" height="53"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="resultImageView" destination="fTD-nL-ok7" id="yxs-AE-4UZ"/>
+                                            <outlet property="titleLabel" destination="uTF-ga-12x" id="pYd-wh-sHh"/>
+                                            <segue destination="uQX-5I-Fay" kind="show" identifier="fromRedditToImport" id="wr6-iZ-FTG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="6vR-KD-vKr" id="ZZJ-oX-nwA"/>
+                                    <outlet property="delegate" destination="6vR-KD-vKr" id="7s0-6j-iaW"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oiB-n7-3Iv">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="subredditResultsTableView" destination="cnq-eS-oyh" id="mlS-am-SeS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G2r-d2-kGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3268.125" y="-1344.7183098591549"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="VZv-Bc-eaZ">
+            <objects>
+                <viewController title="Home" id="86L-3E-PLt" customClass="HomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P3B-gs-qZw"/>
+                        <viewControllerLayoutGuide type="bottom" id="qRW-kc-vqO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qJX-y3-Lj7">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwR-Lh-6pj">
+                                <rect key="frame" x="43" y="48" width="23" height="19"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="7EG-Ba-58h" kind="show" identifier="toGIPHY" id="HBl-MQ-Nep"/>
+                                </connections>
+                            </button>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UlA-0l-Vc4">
+                                <rect key="frame" x="16" y="113" width="288" height="340"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="9" minimumInteritemSpacing="9" id="Col-Ib-iLW">
+                                    <size key="itemSize" width="90" height="90"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" reuseIdentifier="HomeCVC" id="vbH-1m-Q3Q">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <segue destination="wdK-RZ-Kos" kind="show" identifier="recentToDetail" id="x7z-pR-mo5"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="86L-3E-PLt" id="mhk-Hv-jXn"/>
+                                    <outlet property="delegate" destination="86L-3E-PLt" id="4OO-cU-SC7"/>
+                                </connections>
+                            </collectionView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" placeholder="Search the web for GIFs" translatesAutoresizingMaskIntoConstraints="NO" id="KKM-0N-7qu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="barTintColor" red="0.054744525549999999" green="0.36861313870000001" blue="0.80392163989999998" alpha="1" colorSpace="deviceRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="86L-3E-PLt" id="a5v-xh-Pet"/>
+                                </connections>
+                            </searchBar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RECENT GIFS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6s7-Ka-gkQ">
+                                <rect key="frame" x="20" y="84" width="118" height="21"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" red="0.41960787773132324" green="0.7568628191947937" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X15-zK-UFJ">
+                                <rect key="frame" x="231" y="48" width="73" height="27"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Get started by creating a new bucket!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ylc-3i-gnz">
+                                <rect key="frame" x="10" y="100" width="300" height="30"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0M-NN-p6S">
+                                <rect key="frame" x="130" y="385" width="60" height="60"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iw8-gu-bQz">
+                                <rect key="frame" x="260" y="8" width="40" height="40"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79D-fM-bcF">
+                                <rect key="frame" x="81" y="160" width="159" height="30"/>
+                                <state key="normal" title="Search the web for gifs">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchWebHelpButton:" destination="86L-3E-PLt" eventType="touchUpInside" id="Ka9-EY-kZw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aO6-Qd-uaI">
+                                <rect key="frame" x="85" y="200" width="150" height="30"/>
+                                <state key="normal" title="Browse gif subreddits">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="subredditHelpButton:" destination="86L-3E-PLt" eventType="touchUpInside" id="Pjg-b6-Eb6"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wml-qR-SAZ">
+                                <rect key="frame" x="140" y="48" width="40" height="40"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bid-3J-X3H">
+                                <rect key="frame" x="238" y="405" width="40" height="40"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygF-s7-To8">
+                                <rect key="frame" x="61" y="240" width="198" height="30"/>
+                                <state key="normal" title="Import gifs from another app">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="importHelpButton:" destination="86L-3E-PLt" eventType="touchUpInside" id="r2U-ws-z85"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T3G-Oe-yc3">
+                                <rect key="frame" x="60" y="160" width="200" height="200"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Bpk-EU-5FO">
+                        <barButtonItem key="rightBarButtonItem" image="gifbucket-uploadicon-flipped.png" id="8km-dM-rHr">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="barButtonImport:" destination="86L-3E-PLt" id="Qg7-Hz-DR0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="arrowImageView" destination="h0M-NN-p6S" id="VPy-Ho-90c"/>
+                        <outlet property="gifBucketLogoImageView" destination="T3G-Oe-yc3" id="reS-aT-Od0"/>
+                        <outlet property="homeCollectionView" destination="UlA-0l-Vc4" id="Sj8-Ov-Y81"/>
+                        <outlet property="homeSearchBar" destination="KKM-0N-7qu" id="Pvx-wX-ySl"/>
+                        <outlet property="importHelpArrowImageView" destination="Iw8-gu-bQz" id="6gN-pl-JSq"/>
+                        <outlet property="importHelpButtonOutlet" destination="ygF-s7-To8" id="YPx-BG-bpP"/>
+                        <outlet property="noGifsLabel" destination="Ylc-3i-gnz" id="U5u-RI-Xlb"/>
+                        <outlet property="poweredByGiphyOutlet" destination="X15-zK-UFJ" id="AUK-Rc-ghv"/>
+                        <outlet property="recentGifsLabel" destination="6s7-Ka-gkQ" id="qyW-4R-bS4"/>
+                        <outlet property="searchHelpArrowImageView" destination="wml-qR-SAZ" id="Ach-lj-byg"/>
+                        <outlet property="searchWebHelpButtonOutlet" destination="79D-fM-bcF" id="X1Y-0c-QV0"/>
+                        <outlet property="subredditHelpArrowImageView" destination="Bid-3J-X3H" id="TYz-mB-k5v"/>
+                        <outlet property="subredditHelpButtonOutlet" destination="aO6-Qd-uaI" id="3Zq-aP-4jI"/>
+                        <segue destination="uQX-5I-Fay" kind="show" identifier="toImport" id="G7i-Sd-vbD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vGg-bj-Qv8" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301.25" y="-643.30985915492954"/>
+        </scene>
+        <!--Home Search View Controller-->
+        <scene sceneID="8jF-41-jsg">
+            <objects>
+                <viewController id="7EG-Ba-58h" customClass="HomeSearchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3G1-VQ-CXs"/>
+                        <viewControllerLayoutGuide type="bottom" id="8D8-70-MvT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rtI-IJ-BCA">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZDK-SC-g9P">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="4" id="sQb-Fp-URK">
+                                    <size key="itemSize" width="158" height="158"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="searchCell" id="uAe-zP-s0H">
+                                        <rect key="frame" x="0.0" y="0.0" width="158" height="158"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="158" height="158"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qV-Xn-S0J">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="7EG-Ba-58h" id="Fu7-iz-3D7"/>
+                                    <outlet property="delegate" destination="7EG-Ba-58h" id="xpl-Ap-lMj"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nMC-xr-S8f">
+                        <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IWD-FR-jDJ">
+                            <rect key="frame" x="96" y="6" width="128" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <accessibility key="accessibilityConfiguration">
+                                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                <bool key="isElement" value="NO"/>
+                            </accessibility>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <segue destination="uQX-5I-Fay" kind="show" identifier="fromSearchToImport" id="k03-z0-IoI"/>
+                            </connections>
+                        </button>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchCollectionView" destination="ZDK-SC-g9P" id="BuI-mM-bDr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k9z-1x-UOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2287.5" y="-643.30985915492954"/>
+        </scene>
+        <!--Buckets-->
+        <scene sceneID="jXq-eh-mDO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1bZ-mX-omY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Buckets" image="bucketicon.png" id="bac-Bw-L6s"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GXU-Up-HYG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bd4-Ah-EVe" kind="relationship" relationship="rootViewController" id="Iin-ih-kLb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="or3-Kh-2hD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145.625" y="190.14084507042253"/>
+        </scene>
+        <!--Buckets-->
+        <scene sceneID="wh2-nd-UZC">
+            <objects>
+                <viewController id="bd4-Ah-EVe" customClass="BucketViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u89-6T-Hrn"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pac-vt-b7O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k3T-bV-PAZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Jcx-yA-or0">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="bucketCell" rowHeight="80" id="J2g-A6-ax2" customClass="BucketTableViewCell">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J2g-A6-ax2" id="C1L-0a-ua2">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOv-ju-ZjS">
+                                                    <rect key="frame" x="88" y="9" width="479" height="37"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxw-ow-d75">
+                                                    <rect key="frame" x="88" y="52" width="479" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgs-sH-c8E">
+                                                    <rect key="frame" x="8" y="8" width="65" height="64"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellCountLabel" destination="Kxw-ow-d75" id="iMc-ya-JJ0"/>
+                                            <outlet property="cellTextLabel" destination="dOv-ju-ZjS" id="y2f-XT-XPD"/>
+                                            <outlet property="tableViewImageView" destination="mgs-sH-c8E" id="nTK-ix-bnm"/>
+                                            <segue destination="Wrk-Qs-lll" kind="show" identifier="categorySegue" id="7LE-wy-1Ta"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="bd4-Ah-EVe" id="l0v-ho-Zcg"/>
+                                    <outlet property="delegate" destination="bd4-Ah-EVe" id="C3S-H6-Pbq"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jcx-yA-or0" firstAttribute="leading" secondItem="k3T-bV-PAZ" secondAttribute="leadingMargin" constant="-16" id="1oZ-CE-zVI"/>
+                            <constraint firstItem="Jcx-yA-or0" firstAttribute="top" secondItem="k3T-bV-PAZ" secondAttribute="topMargin" id="41C-cA-nOD"/>
+                            <constraint firstItem="Pac-vt-b7O" firstAttribute="top" secondItem="Jcx-yA-or0" secondAttribute="bottom" id="bmt-bH-dNt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jcx-yA-or0" secondAttribute="trailing" constant="-16" id="mEE-hp-qHp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Buckets" id="EFv-Qv-wSX">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" style="plain" id="auJ-Ig-pFq">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HJR-0w-yAm">
+                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="3fi-bn-gEB" kind="show" identifier="buySegue" id="qdX-R0-ExP"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="O5e-LW-1dw">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addButton:" destination="bd4-Ah-EVe" id="C6v-MN-5Ec"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bucketTableView" destination="Jcx-yA-or0" id="Nuj-Mo-620"/>
+                        <outlet property="segueOnlyButton" destination="HJR-0w-yAm" id="b3b-wq-8WH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qz4-h9-ekW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1912" y="184"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="y1z-6r-Vfy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qzu-Rb-7wv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="homeicon.png" id="zge-yO-b0A"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mtT-gj-4Nn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="86L-3E-PLt" kind="relationship" relationship="rootViewController" id="43A-QQ-We5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aRZ-BA-7sD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="247.5" y="-575.70422535211264"/>
+        </scene>
+        <!--Subreddits-->
+        <scene sceneID="AMo-wW-b39">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pu5-1F-wN5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Subreddits" image="business-reddit-head-small.png" id="DjH-gf-X55"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Olh-15-vzL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Atx-VX-1zs" kind="relationship" relationship="rootViewController" id="Fjn-ur-w6S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NJu-nM-qvK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301.25" y="-1329.9295774647887"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bucketicon.png" width="35" height="35"/>
+        <image name="business-reddit-head-small.png" width="35" height="29"/>
+        <image name="gifbucket-uploadicon-flipped.png" width="26" height="26"/>
+        <image name="homeicon.png" width="35" height="35"/>
+        <image name="redflag40.png" width="40" height="40"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="VTC-C7-HqV"/>
+        <segue reference="wr6-iZ-FTG"/>
+        <segue reference="9rF-O5-TuT"/>
+    </inferredMetricsTieBreakers>
+</document>

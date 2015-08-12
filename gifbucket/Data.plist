@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Cats</key>
+	<array>
+		<string>/cat1</string>
+		<string>/cat2</string>
+		<string>/cat3</string>
+		<string>/cat4</string>
+		<string>/cat5</string>
+	</array>
+	<key>Jim Carrey</key>
+	<array>
+		<string>/jc1</string>
+		<string>/jc2</string>
+		<string>/jc3</string>
+		<string>/jc4</string>
+		<string>/jc5</string>
+	</array>
+	<key>Miscellaneous</key>
+	<array>
+		<string>/misc1</string>
+		<string>/misc2</string>
+		<string>/misc3</string>
+		<string>/misc4</string>
+		<string>/misc5</string>
+	</array>
+	<key>Reactions</key>
+	<array>
+		<string>/react1</string>
+		<string>/react2</string>
+		<string>/react3</string>
+		<string>/react4</string>
+		<string>/react5</string>
+	</array>
+</dict>
+</plist>
