@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -15,24 +15,31 @@
                         <viewControllerLayoutGuide type="bottom" id="QCF-LM-xvr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Fo9-3S-hKq">
-                        <rect key="frame" x="0.0" y="64" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFY-1e-ihG">
-                                <rect key="frame" x="43" y="109" width="234" height="2"/>
-                            </progressView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SI8-kL-Qmg">
-                                <rect key="frame" x="0.0" y="186" width="320" height="162"/>
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SI8-kL-Qmg">
+                                <rect key="frame" x="0.0" y="307" width="600" height="162"/>
                                 <connections>
                                     <outlet property="dataSource" destination="uQX-5I-Fay" id="JnT-Kb-foD"/>
                                     <outlet property="delegate" destination="uQX-5I-Fay" id="n0u-v2-b7G"/>
                                 </connections>
                             </pickerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3Y-P1-p1h">
-                                <rect key="frame" x="43" y="8" width="234" height="204"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3Y-P1-p1h" customClass="FLAnimatedImageView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="235"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="235" id="Jgs-dG-Lvn"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="36" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qT-PK-xRW">
-                                <rect key="frame" x="60" y="327" width="200" height="36"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFY-1e-ihG">
+                                <rect key="frame" x="0.0" y="72" width="600" height="2"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="36" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qT-PK-xRW">
+                                <rect key="frame" x="200" y="484" width="200" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="h2w-m3-IHs"/>
+                                    <constraint firstAttribute="width" constant="200" id="xf1-xj-ebd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Save to Bucket">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,8 +56,12 @@
                                     <segue destination="8YX-ce-x5E" kind="presentation" identifier="importSegue" id="L4K-wt-Lg2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJZ-Sg-8Ks">
-                                <rect key="frame" x="264" y="327" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJZ-Sg-8Ks">
+                                <rect key="frame" x="544" y="482" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="I5w-en-A92"/>
+                                    <constraint firstAttribute="width" constant="40" id="f6O-bN-kOO"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="redflag40.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -58,8 +69,35 @@
                                     <action selector="flagButton:" destination="uQX-5I-Fay" eventType="touchUpInside" id="8LR-v4-lp5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0/0 MB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leN-Id-Egy">
+                                <rect key="frame" x="0.0" y="145" width="600" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="q9L-Tp-tL5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SI8-kL-Qmg" firstAttribute="leading" secondItem="Fo9-3S-hKq" secondAttribute="leadingMargin" constant="-16" id="4TK-h6-Y0y"/>
+                            <constraint firstItem="sFY-1e-ihG" firstAttribute="top" secondItem="SQ8-qO-sLr" secondAttribute="bottom" id="9K8-AG-jOz"/>
+                            <constraint firstItem="QCF-LM-xvr" firstAttribute="top" secondItem="1qT-PK-xRW" secondAttribute="bottom" constant="29" id="FQL-78-uZd"/>
+                            <constraint firstItem="leN-Id-Egy" firstAttribute="top" secondItem="sFY-1e-ihG" secondAttribute="bottom" constant="71" id="Ptb-Vt-16y"/>
+                            <constraint firstItem="E3Y-P1-p1h" firstAttribute="leading" secondItem="Fo9-3S-hKq" secondAttribute="leadingMargin" constant="-16" id="R6O-nS-bAl"/>
+                            <constraint firstItem="E3Y-P1-p1h" firstAttribute="top" secondItem="SQ8-qO-sLr" secondAttribute="bottom" id="Raj-ud-BAv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sFY-1e-ihG" secondAttribute="trailing" constant="-16" id="V7M-LM-Uld"/>
+                            <constraint firstItem="QCF-LM-xvr" firstAttribute="top" secondItem="gJZ-Sg-8Ks" secondAttribute="bottom" constant="29" id="ai6-Fb-ICW"/>
+                            <constraint firstItem="SI8-kL-Qmg" firstAttribute="top" secondItem="E3Y-P1-p1h" secondAttribute="bottom" constant="8" id="bu9-wU-e6a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SI8-kL-Qmg" secondAttribute="trailing" constant="-16" id="ddf-k6-955"/>
+                            <constraint firstItem="sFY-1e-ihG" firstAttribute="leading" secondItem="Fo9-3S-hKq" secondAttribute="leadingMargin" constant="-16" id="dlm-CI-dY3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="leN-Id-Egy" secondAttribute="trailing" constant="-16" id="fDO-1k-xLs"/>
+                            <constraint firstItem="leN-Id-Egy" firstAttribute="leading" secondItem="Fo9-3S-hKq" secondAttribute="leadingMargin" constant="-16" id="iYC-29-Ekk"/>
+                            <constraint firstAttribute="centerX" secondItem="1qT-PK-xRW" secondAttribute="centerX" id="mHz-NX-NE2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="E3Y-P1-p1h" secondAttribute="trailing" constant="-16" id="oU7-7D-UtK"/>
+                            <constraint firstItem="gJZ-Sg-8Ks" firstAttribute="trailing" secondItem="Fo9-3S-hKq" secondAttribute="trailingMargin" id="so2-HL-Rje"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="IMPORT" id="S2A-TS-td9">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="ebX-zv-vp4">
@@ -69,6 +107,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bytesLabel" destination="leN-Id-Egy" id="ViH-Mx-XuZ"/>
                         <outlet property="categoryPicker" destination="SI8-kL-Qmg" id="iEt-Ls-gAT"/>
                         <outlet property="flagButton" destination="gJZ-Sg-8Ks" id="TaP-7T-cKB"/>
                         <outlet property="importButton" destination="1qT-PK-xRW" id="rf6-4Q-LYV"/>
@@ -78,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ex-eq-2wu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3622.5" y="-546.12676056338023"/>
+            <point key="canvasLocation" x="3622" y="-547"/>
         </scene>
         <!--AgreementViewController-->
         <scene sceneID="NSc-vM-dO1">
@@ -241,8 +280,8 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lu3-WL-Mgz">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lu3-WL-Mgz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="367"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="purchaseCell" rowHeight="90" id="4Cv-aM-vhl" customClass="NewBucketTableViewCell">
@@ -297,17 +336,19 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                                     <outlet property="delegate" destination="3fi-bn-gEB" id="688-zM-cP8"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8YE-T6-Ghc">
-                                <rect key="frame" x="30" y="456" width="260" height="60"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8YE-T6-Ghc">
+                                <rect key="frame" x="170" y="482" width="260" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="53u-Vt-k4A"/>
+                                    <constraint firstAttribute="width" constant="260" id="K9F-O6-bV4"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHk-hh-PgC">
-                                <rect key="frame" x="30" y="432" width="260" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7B-Ls-Z3S">
-                                <rect key="frame" x="68" y="400" width="185" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7B-Ls-Z3S">
+                                <rect key="frame" x="208" y="426" width="185" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="P2Z-qN-nC6"/>
+                                    <constraint firstAttribute="width" constant="185" id="guH-0F-C1K"/>
+                                </constraints>
                                 <state key="normal" title="Restore Previous Purchase">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -315,8 +356,29 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                                     <action selector="restoreButtonAction:" destination="3fi-bn-gEB" eventType="touchUpInside" id="tlO-UL-Bm1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHk-hh-PgC">
+                                <rect key="frame" x="170" y="458" width="260" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="AD0-8w-dM5"/>
+                                    <constraint firstAttribute="width" constant="260" id="U0N-ws-3LC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VHk-hh-PgC" firstAttribute="top" secondItem="J7B-Ls-Z3S" secondAttribute="bottom" constant="2" id="IDP-Ew-RbQ"/>
+                            <constraint firstAttribute="centerX" secondItem="J7B-Ls-Z3S" secondAttribute="centerX" constant="-0.5" id="OSy-L1-6lW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Lu3-WL-Mgz" secondAttribute="trailing" constant="-16" id="SMH-52-Dqt"/>
+                            <constraint firstAttribute="centerX" secondItem="8YE-T6-Ghc" secondAttribute="centerX" id="VEJ-gf-Nrq"/>
+                            <constraint firstItem="8YE-T6-Ghc" firstAttribute="top" secondItem="VHk-hh-PgC" secondAttribute="bottom" constant="3" id="WS5-hB-QYc"/>
+                            <constraint firstItem="Lu3-WL-Mgz" firstAttribute="leading" secondItem="9ve-85-Oau" secondAttribute="leadingMargin" constant="-16" id="f9E-Xo-VjO"/>
+                            <constraint firstItem="Lu3-WL-Mgz" firstAttribute="top" secondItem="9ve-85-Oau" secondAttribute="topMargin" id="fEd-ux-VRf"/>
+                            <constraint firstAttribute="centerX" secondItem="VHk-hh-PgC" secondAttribute="centerX" id="n0H-4P-UGp"/>
+                            <constraint firstItem="tdE-KY-KCn" firstAttribute="top" secondItem="8YE-T6-Ghc" secondAttribute="bottom" constant="14" id="neT-7t-kbN"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Mh6-aP-iY0"/>
@@ -330,7 +392,7 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36z-2h-SHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1912.5" y="953.87323943661966"/>
+            <point key="canvasLocation" x="1912" y="953"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
@@ -365,7 +427,7 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="this bucket is empty :(" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abX-g5-ReY" userLabel="emptyBucketLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="this bucket is empty :(" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abX-g5-ReY" userLabel="emptyBucketLabel">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <accessibility key="accessibilityConfiguration" label="asdfsdaf"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -373,7 +435,7 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uxc-Lx-BSy">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="WKs-he-QEU">
                                     <size key="itemSize" width="104" height="104"/>
                                     <size key="headerReferenceSize" width="0.0" height="3"/>
@@ -412,12 +474,10 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Uxc-Lx-BSy" secondAttribute="trailing" constant="-16" id="1Bc-Li-mbF"/>
-                            <constraint firstItem="Uxc-Lx-BSy" firstAttribute="leading" secondItem="QL2-qi-gyw" secondAttribute="leadingMargin" constant="-16" id="Hxx-62-kmA"/>
-                            <constraint firstAttribute="centerY" secondItem="abX-g5-ReY" secondAttribute="centerY" id="Ogr-dX-03f"/>
-                            <constraint firstItem="Uxc-Lx-BSy" firstAttribute="top" secondItem="QL2-qi-gyw" secondAttribute="topMargin" id="Ppc-Rr-SgY"/>
-                            <constraint firstAttribute="centerX" secondItem="abX-g5-ReY" secondAttribute="centerX" id="o7b-y0-aY0"/>
-                            <constraint firstItem="8OZ-Zz-Kgh" firstAttribute="top" secondItem="Uxc-Lx-BSy" secondAttribute="bottom" id="yVu-cx-Zoq"/>
+                            <constraint firstItem="Uxc-Lx-BSy" firstAttribute="leading" secondItem="QL2-qi-gyw" secondAttribute="leadingMargin" constant="-16" id="BFY-FS-RSE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Uxc-Lx-BSy" secondAttribute="trailing" constant="-16" id="dgJ-Be-1kS"/>
+                            <constraint firstItem="8OZ-Zz-Kgh" firstAttribute="top" secondItem="Uxc-Lx-BSy" secondAttribute="bottom" id="kpL-nf-TNg"/>
+                            <constraint firstItem="Uxc-Lx-BSy" firstAttribute="top" secondItem="GC6-Cf-Khg" secondAttribute="bottom" id="muo-8X-e0b"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DUP-H4-5T5"/>
@@ -442,17 +502,14 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kb-6g-AMU">
-                                <rect key="frame" x="180" y="410" width="94" height="30"/>
-                                <state key="normal" title="Go Unlimited!">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="removeAdsButtonAction:" destination="wdK-RZ-Kos" eventType="touchUpInside" id="Vhs-x9-tue"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVb-H5-cn5">
-                                <rect key="frame" x="33" y="410" width="88" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gO0-qI-4dk" customClass="FLAnimatedImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVb-H5-cn5">
+                                <rect key="frame" x="33" y="502" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="q9f-6z-KVq"/>
+                                </constraints>
                                 <state key="normal" title="Remove Ads">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -460,9 +517,31 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                                     <action selector="freeGameButton:" destination="wdK-RZ-Kos" eventType="touchUpInside" id="F4t-DP-bcR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kb-6g-AMU">
+                                <rect key="frame" x="443" y="502" width="114" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="wjG-IT-XqZ"/>
+                                </constraints>
+                                <state key="normal" title="Go Unlimited!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeAdsButtonAction:" destination="wdK-RZ-Kos" eventType="touchUpInside" id="Vhs-x9-tue"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.039215686274509803" green="0.37647058823529411" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="pAW-Za-iu5" firstAttribute="top" secondItem="wVb-H5-cn5" secondAttribute="bottom" constant="24" id="71O-Se-zkw"/>
+                            <constraint firstItem="gO0-qI-4dk" firstAttribute="top" secondItem="Lnp-kk-qxd" secondAttribute="bottom" id="JuD-2D-1Xp"/>
+                            <constraint firstItem="gO0-qI-4dk" firstAttribute="leading" secondItem="haq-IQ-Cif" secondAttribute="leadingMargin" constant="-16" id="Nzx-ds-HAU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4kb-6g-AMU" secondAttribute="trailing" constant="27" id="Vqa-qo-Xw1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gO0-qI-4dk" secondAttribute="trailing" constant="-16" id="eZA-cf-uke"/>
+                            <constraint firstItem="pAW-Za-iu5" firstAttribute="top" secondItem="gO0-qI-4dk" secondAttribute="bottom" id="iaD-bD-aVD"/>
+                            <constraint firstItem="wVb-H5-cn5" firstAttribute="leading" secondItem="haq-IQ-Cif" secondAttribute="leadingMargin" constant="17" id="yRz-Qp-EhR"/>
+                            <constraint firstItem="pAW-Za-iu5" firstAttribute="top" secondItem="4kb-6g-AMU" secondAttribute="bottom" constant="24" id="zEu-hn-Wj0"/>
+                        </constraints>
                     </view>
                     <toolbarItems>
                         <barButtonItem title="Item" systemItem="trash" id="pc9-Yn-jpG">
@@ -475,12 +554,13 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="freeGameButtonOutlet" destination="wVb-H5-cn5" id="GTv-gV-bcW"/>
+                        <outlet property="gifImageView" destination="gO0-qI-4dk" id="MMh-ae-edm"/>
                         <outlet property="removeAdsButtonOutlet" destination="4kb-6g-AMU" id="Iu1-hl-a3n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oO6-o3-dvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3658.125" y="190.14084507042253"/>
+            <point key="canvasLocation" x="3658" y="190"/>
         </scene>
         <!--reddit.com/r/-->
         <scene sceneID="0nh-e7-yXW">
@@ -494,8 +574,8 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hVd-jI-6eC">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="469"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hVd-jI-6eC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="subReddit" id="Um9-EY-EMl">
@@ -517,6 +597,12 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XeS-5h-nP2" firstAttribute="top" secondItem="hVd-jI-6eC" secondAttribute="bottom" id="AQ0-HR-Ku9"/>
+                            <constraint firstItem="hVd-jI-6eC" firstAttribute="top" secondItem="p9M-jm-O0l" secondAttribute="topMargin" id="F8R-Jt-was"/>
+                            <constraint firstItem="hVd-jI-6eC" firstAttribute="leading" secondItem="p9M-jm-O0l" secondAttribute="leadingMargin" constant="-16" id="bU0-R9-kFB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hVd-jI-6eC" secondAttribute="trailing" constant="-16" id="vEp-l5-ryr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="reddit.com/r/" id="X6y-wb-IpA">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ip5-xC-LWM">
@@ -532,7 +618,7 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zcy-M6-umy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2287.5" y="-1329.9295774647887"/>
+            <point key="canvasLocation" x="2287" y="-1330"/>
         </scene>
         <!--Home Reddit Web View Controller-->
         <scene sceneID="FXI-zu-7gX">
@@ -546,8 +632,8 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cnq-eS-oyh">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cnq-eS-oyh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="subviewCell" rowHeight="70" id="oak-vr-rZL" customClass="RedditTableViewCell">
@@ -581,6 +667,12 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="cnq-eS-oyh" secondAttribute="trailing" constant="-16" id="PNK-dg-tzY"/>
+                            <constraint firstItem="cnq-eS-oyh" firstAttribute="top" secondItem="soq-Uc-LvR" secondAttribute="topMargin" id="bJO-oo-fcG"/>
+                            <constraint firstItem="Udj-hF-BDU" firstAttribute="top" secondItem="cnq-eS-oyh" secondAttribute="bottom" id="sT9-1O-x7y"/>
+                            <constraint firstItem="cnq-eS-oyh" firstAttribute="leading" secondItem="soq-Uc-LvR" secondAttribute="leadingMargin" constant="-16" id="xFn-vR-sWx"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oiB-n7-3Iv">
                         <nil key="title"/>
@@ -591,7 +683,7 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2r-d2-kGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3268.125" y="-1344.7183098591549"/>
+            <point key="canvasLocation" x="3268" y="-1345"/>
         </scene>
         <!--Home-->
         <scene sceneID="VZv-Bc-eaZ">
@@ -605,7 +697,7 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwR-Lh-6pj">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwR-Lh-6pj">
                                 <rect key="frame" x="43" y="48" width="23" height="19"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
@@ -618,8 +710,89 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                                     <segue destination="7EG-Ba-58h" kind="show" identifier="toGIPHY" id="HBl-MQ-Nep"/>
                                 </connections>
                             </button>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UlA-0l-Vc4">
-                                <rect key="frame" x="16" y="113" width="288" height="340"/>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search the web for GIFs" translatesAutoresizingMaskIntoConstraints="NO" id="KKM-0N-7qu">
+                                <rect key="frame" x="16" y="0.0" width="568" height="44"/>
+                                <color key="barTintColor" red="0.054744525549999999" green="0.36861313870000001" blue="0.80392163989999998" alpha="1" colorSpace="deviceRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="86L-3E-PLt" id="a5v-xh-Pet"/>
+                                </connections>
+                            </searchBar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="RECENT GIFS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6s7-Ka-gkQ">
+                                <rect key="frame" x="20" y="84" width="118" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="DqQ-TA-GAW"/>
+                                    <constraint firstAttribute="height" constant="21" id="Htx-WM-tjU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" red="0.41960787773132324" green="0.7568628191947937" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X15-zK-UFJ">
+                                <rect key="frame" x="511" y="48" width="73" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="A3N-e4-YSl"/>
+                                    <constraint firstAttribute="width" constant="73" id="Ncz-67-ty8"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get started by creating a new bucket!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ylc-3i-gnz">
+                                <rect key="frame" x="150" y="113" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="lvO-Wb-w0f"/>
+                                    <constraint firstAttribute="width" constant="300" id="urz-Wi-fNo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0M-NN-p6S">
+                                <rect key="frame" x="494" y="424" width="60" height="60"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iw8-gu-bQz">
+                                <rect key="frame" x="403" y="444" width="40" height="40"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79D-fM-bcF">
+                                <rect key="frame" x="81" y="160" width="159" height="30"/>
+                                <state key="normal" title="Search the web for gifs">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchWebHelpButton:" destination="86L-3E-PLt" eventType="touchUpInside" id="Ka9-EY-kZw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aO6-Qd-uaI">
+                                <rect key="frame" x="85" y="200" width="150" height="30"/>
+                                <state key="normal" title="Browse gif subreddits">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="subredditHelpButton:" destination="86L-3E-PLt" eventType="touchUpInside" id="Pjg-b6-Eb6"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wml-qR-SAZ">
+                                <rect key="frame" x="360" y="444" width="40" height="40"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bid-3J-X3H">
+                                <rect key="frame" x="446" y="444" width="40" height="40"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygF-s7-To8">
+                                <rect key="frame" x="61" y="240" width="198" height="30"/>
+                                <state key="normal" title="Import gifs from another app">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="importHelpButton:" destination="86L-3E-PLt" eventType="touchUpInside" id="r2U-ws-z85"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T3G-Oe-yc3">
+                                <rect key="frame" x="200" y="151" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="aDa-pi-Vww"/>
+                                    <constraint firstAttribute="height" constant="200" id="oSk-sU-61W"/>
+                                </constraints>
+                            </imageView>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UlA-0l-Vc4">
+                                <rect key="frame" x="16" y="113" width="568" height="371"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="9" minimumInteritemSpacing="9" id="Col-Ib-iLW">
                                     <size key="itemSize" width="90" height="90"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -645,73 +818,25 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                                     <outlet property="delegate" destination="86L-3E-PLt" id="4OO-cU-SC7"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" placeholder="Search the web for GIFs" translatesAutoresizingMaskIntoConstraints="NO" id="KKM-0N-7qu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <color key="barTintColor" red="0.054744525549999999" green="0.36861313870000001" blue="0.80392163989999998" alpha="1" colorSpace="deviceRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="86L-3E-PLt" id="a5v-xh-Pet"/>
-                                </connections>
-                            </searchBar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RECENT GIFS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6s7-Ka-gkQ">
-                                <rect key="frame" x="20" y="84" width="118" height="21"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                <color key="textColor" red="0.41960787773132324" green="0.7568628191947937" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X15-zK-UFJ">
-                                <rect key="frame" x="231" y="48" width="73" height="27"/>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Get started by creating a new bucket!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ylc-3i-gnz">
-                                <rect key="frame" x="10" y="100" width="300" height="30"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0M-NN-p6S">
-                                <rect key="frame" x="130" y="385" width="60" height="60"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iw8-gu-bQz">
-                                <rect key="frame" x="260" y="8" width="40" height="40"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79D-fM-bcF">
-                                <rect key="frame" x="81" y="160" width="159" height="30"/>
-                                <state key="normal" title="Search the web for gifs">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="searchWebHelpButton:" destination="86L-3E-PLt" eventType="touchUpInside" id="Ka9-EY-kZw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aO6-Qd-uaI">
-                                <rect key="frame" x="85" y="200" width="150" height="30"/>
-                                <state key="normal" title="Browse gif subreddits">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="subredditHelpButton:" destination="86L-3E-PLt" eventType="touchUpInside" id="Pjg-b6-Eb6"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wml-qR-SAZ">
-                                <rect key="frame" x="140" y="48" width="40" height="40"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bid-3J-X3H">
-                                <rect key="frame" x="238" y="405" width="40" height="40"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygF-s7-To8">
-                                <rect key="frame" x="61" y="240" width="198" height="30"/>
-                                <state key="normal" title="Import gifs from another app">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="importHelpButton:" destination="86L-3E-PLt" eventType="touchUpInside" id="r2U-ws-z85"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T3G-Oe-yc3">
-                                <rect key="frame" x="60" y="160" width="200" height="200"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UlA-0l-Vc4" firstAttribute="trailing" secondItem="qJX-y3-Lj7" secondAttribute="trailingMargin" id="2Tv-tG-9W6"/>
+                            <constraint firstItem="KKM-0N-7qu" firstAttribute="top" secondItem="P3B-gs-qZw" secondAttribute="bottom" id="42A-hL-h6n"/>
+                            <constraint firstAttribute="centerX" secondItem="T3G-Oe-yc3" secondAttribute="centerX" id="80k-Au-XeJ"/>
+                            <constraint firstItem="Ylc-3i-gnz" firstAttribute="top" secondItem="KKM-0N-7qu" secondAttribute="bottom" constant="69" id="GBa-xR-T6F"/>
+                            <constraint firstItem="UlA-0l-Vc4" firstAttribute="leading" secondItem="qJX-y3-Lj7" secondAttribute="leadingMargin" id="H7L-7S-e49"/>
+                            <constraint firstItem="T3G-Oe-yc3" firstAttribute="top" secondItem="Ylc-3i-gnz" secondAttribute="bottom" constant="8" id="IwK-vz-12C"/>
+                            <constraint firstItem="KKM-0N-7qu" firstAttribute="trailing" secondItem="qJX-y3-Lj7" secondAttribute="trailingMargin" id="Pkt-GP-dMl"/>
+                            <constraint firstItem="qRW-kc-vqO" firstAttribute="top" secondItem="UlA-0l-Vc4" secondAttribute="bottom" constant="8" id="Y3b-lh-MrM"/>
+                            <constraint firstItem="6s7-Ka-gkQ" firstAttribute="leading" secondItem="qJX-y3-Lj7" secondAttribute="leadingMargin" constant="4" id="fwl-AD-9Yi"/>
+                            <constraint firstAttribute="centerX" secondItem="Ylc-3i-gnz" secondAttribute="centerX" id="hW1-WW-ETr"/>
+                            <constraint firstItem="6s7-Ka-gkQ" firstAttribute="top" secondItem="OwR-Lh-6pj" secondAttribute="bottom" constant="17" id="hZR-j9-zVR"/>
+                            <constraint firstItem="UlA-0l-Vc4" firstAttribute="top" secondItem="6s7-Ka-gkQ" secondAttribute="bottom" constant="8" id="iml-qc-4YV"/>
+                            <constraint firstItem="X15-zK-UFJ" firstAttribute="trailing" secondItem="qJX-y3-Lj7" secondAttribute="trailingMargin" id="o60-LO-vMs"/>
+                            <constraint firstItem="X15-zK-UFJ" firstAttribute="top" secondItem="KKM-0N-7qu" secondAttribute="bottom" constant="4" id="pbS-9p-ufK"/>
+                            <constraint firstItem="KKM-0N-7qu" firstAttribute="leading" secondItem="qJX-y3-Lj7" secondAttribute="leadingMargin" id="u67-42-NJ8"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Bpk-EU-5FO">
@@ -742,7 +867,7 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vGg-bj-Qv8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1301.25" y="-643.30985915492954"/>
+            <point key="canvasLocation" x="1301" y="-644"/>
         </scene>
         <!--Home Search View Controller-->
         <scene sceneID="8jF-41-jsg">
@@ -756,8 +881,8 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZDK-SC-g9P">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZDK-SC-g9P">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="504"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="4" id="sQb-Fp-URK">
                                     <size key="itemSize" width="158" height="158"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -789,11 +914,17 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="ZDK-SC-g9P" secondAttribute="bottom" constant="32" id="7OK-Lq-eG1"/>
+                            <constraint firstItem="ZDK-SC-g9P" firstAttribute="leading" secondItem="rtI-IJ-BCA" secondAttribute="leadingMargin" constant="-16" id="TYN-Ru-rSf"/>
+                            <constraint firstItem="ZDK-SC-g9P" firstAttribute="top" secondItem="3G1-VQ-CXs" secondAttribute="bottom" id="auy-w8-Qjd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZDK-SC-g9P" secondAttribute="trailing" constant="-16" id="gnD-yb-4sF"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nMC-xr-S8f">
                         <nil key="title"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IWD-FR-jDJ">
-                            <rect key="frame" x="96" y="6" width="128" height="33"/>
+                            <rect key="frame" x="236" y="5.5" width="128" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
@@ -814,7 +945,7 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9z-1x-UOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2287.5" y="-643.30985915492954"/>
+            <point key="canvasLocation" x="2287" y="-644"/>
         </scene>
         <!--Buckets-->
         <scene sceneID="jXq-eh-mDO">
@@ -972,8 +1103,8 @@ This Agreement constitutes the entire agreement between you and Gif Bucket and i
         <image name="redflag40.png" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VTC-C7-HqV"/>
-        <segue reference="wr6-iZ-FTG"/>
+        <segue reference="i1R-Tb-mJw"/>
+        <segue reference="k03-z0-IoI"/>
         <segue reference="9rF-O5-TuT"/>
     </inferredMetricsTieBreakers>
 </document>

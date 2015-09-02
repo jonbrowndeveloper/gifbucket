@@ -20,7 +20,7 @@
 
 @implementation ImportToCategoryViewController
 
-@synthesize categoryPicker, importCategories, categoryKeys, uniqueFileName, importGIFPath, importedGIFImageView, wasImportPressed, importManagedObjectContext = _importManagedObjectContext, selectedCategory, importButton, gifDictionary, urlString, urlDownloadString, flagButton, bucketIsFull;
+@synthesize categoryPicker, importCategories, categoryKeys, uniqueFileName, importGIFPath, importedGIFImageView, wasImportPressed, importManagedObjectContext = _importManagedObjectContext, selectedCategory, importButton, gifDictionary, urlString, urlDownloadString, flagButton, bucketIsFull, bytesLabel;
 
 - (NSManagedObjectContext *)managedObjectContext
 {
@@ -36,7 +36,18 @@
 {
     [super viewDidLoad];
 
-
+    categoryPicker.hidden = YES;
+    importedGIFImageView.hidden = YES;
+    flagButton.hidden = YES;
+    importButton.hidden = YES;
+    
+    // detect device rotation
+    
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didRotate:)
+                                                 name:@"UIDeviceOrientationDidChangeNotification"
+                                               object:nil];
     
     // hide import button and configue look / location
     
@@ -479,6 +490,9 @@
     {
         self.progressView.hidden = NO;
     }
+    
+    bytesLabel.text = [NSString stringWithFormat:@"%.02f/%lld MB", ((float)self.downloadMutableData.length/1000000),(self.urlResponse.expectedContentLength/1000000)];
+    
     // NSLog(@"%.0f%%", ((100.0/self.urlResponse.expectedContentLength)*self.downloadMutableData.length));
 }
 
@@ -502,14 +516,13 @@
     [pngData writeToFile:pngFilePath atomically:YES];
     
     FLAnimatedImage *image = [[FLAnimatedImage alloc] initWithAnimatedGIFData:[NSData dataWithContentsOfFile:importGIFPath]];
-    FLAnimatedImageView *theImageView = [[FLAnimatedImageView alloc] init];
-    theImageView.animatedImage = image;
-    theImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.importedGIFImageView.animatedImage = image;
+    self.importedGIFImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     image = nil;
     
-    theImageView.frame = CGRectMake(0.0, 0.0, 234.0, 204.0);
-    [self.importedGIFImageView addSubview:theImageView];
+    // theImageView.frame = CGRectMake(0.0, 0.0, 234.0, 204.0);
+    // [self.importedGIFImageView addSubview:theImageView];
     
     // clear up memory
     
@@ -518,7 +531,17 @@
     
     // un-hide import button
     
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.15;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    transition.delegate = self;
+    [self.view.layer addAnimation:transition forKey:nil];
     importButton.hidden = NO;
+    flagButton.hidden = NO;
+    importedGIFImageView.hidden = NO;
+    categoryPicker.hidden = NO;
+    bytesLabel.hidden = YES;
     
     // Display imported GIF
 }
@@ -598,4 +621,36 @@
     
     // [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)hideImportButtons
+{
+    self.importButton.hidden = YES;
+    self.categoryPicker.hidden = YES;
+    self.flagButton.hidden = YES;
+}
+
+- (void) didRotate:(NSNotification *)notification {
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    
+    switch (orientation) {
+        case UIDeviceOrientationPortrait:
+            self.importButton.hidden = NO;
+            self.categoryPicker.hidden = NO;
+            self.flagButton.hidden = NO;
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+            [self hideImportButtons];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            [self hideImportButtons];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            [self hideImportButtons];
+            break;
+            
+        default:
+            break;
+    }
+}
+
 @end

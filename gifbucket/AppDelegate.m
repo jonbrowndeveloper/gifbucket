@@ -10,9 +10,7 @@
 #import "GifBucketIAPHelper.h"
 #import "AgreementViewController.h"
 #import "Reachability.h"
-#import "ALSdk.h"
 #import "BucketGIFImageViewController.h"
-#import "ACTReporter.h"
 #import "AppsfireSDK.h"
 
 @implementation AppDelegate
@@ -73,18 +71,18 @@
 {
     // start google install tracking support
     
-    [ACTConversionReporter reportWithConversionID:@"957960831" label:@"RVgzCMiXtlkQ_6TlyAM" value:@"0.03" isRepeatable:NO];
+    // [ACTConversionReporter reportWithConversionID:@"957960831" label:@"RVgzCMiXtlkQ_6TlyAM" value:@"0.03" isRepeatable:NO];
     
     // start AppLovin support
     
-    [ALSdk initializeSdk];
+    // [ALSdk initializeSdk];
     
     // Start AppsFire
     
     [AppsfireSDK connectWithSDKToken:@"F70AA9980F8A7E4BC66C79F0996EB9FB" secretKey:@"14bc4309bc2034531c70db5783abe480" features:AFSDKFeatureMonetization parameters:nil];
     
 #ifdef DEBUG
-    [AppsfireSDK setDebugModeEnabled:YES];
+    // [AppsfireSDK setDebugModeEnabled:YES];
 #endif
     
     // Intial File Managment. Check if Documents Direcotry is there and add in Data and Recents Plists
@@ -117,7 +115,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:numberOfBuckets forKey:@"maximumNumberOfBuckets"];
         
         // set bool for GIF Bucket Ultimate
-        BOOL isUnlimited = YES; // currently of 
+        BOOL isUnlimited = NO;
         [[NSUserDefaults standardUserDefaults] setBool:isUnlimited forKey:@"isUnlimited"];
         
         // set bool for restored purchases alert
@@ -338,6 +336,8 @@
     // NSLog(@"open url: %@", url);
     receivedGIFURL = [[NSURL alloc] init];
     receivedGIFURL = url;
+    
+    // TODO SET VIEW TO IMPORT WINDOW
     return YES;
 }
 							

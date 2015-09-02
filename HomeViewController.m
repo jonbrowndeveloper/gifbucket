@@ -194,6 +194,7 @@
             i = i + 9;
         }
 
+        homeCollectionView.hidden = YES;
         gifBucketLogoImageView.hidden = YES;
         subredditHelpButtonOutlet.hidden = YES;
         subredditHelpArrowImageView.hidden = YES;
@@ -226,13 +227,16 @@
         if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isUnlimited"])
         {
             gifBucketLogoImageView.image = [UIImage imageNamed:@"gifbucketicon-infinite200.png"];
+            NSLog(@"gif bucket unlimited logo should be shown");
         }
         else
         {
             gifBucketLogoImageView.image = [UIImage imageNamed:@"gifbucketicon-noshadow200.png"];
+            NSLog(@"gif bucket logo should be shown");
         }
 
         gifBucketLogoImageView.hidden = NO;
+        homeCollectionView.hidden = YES;
         arrowImageView.hidden = YES;
         recentGifsLabel.hidden = YES;
         noGifsLabel.hidden = NO;
@@ -242,6 +246,7 @@
     
     else if (categoryFetchArray.count != 0 && recentImages.count != 0)
     {
+        homeCollectionView.hidden = NO;
         gifBucketLogoImageView.hidden = YES;
         arrowImageView.hidden = YES;
         noGifsLabel.hidden = YES;

@@ -44,7 +44,7 @@
     // additional room on bottom for tab bar
     
     // set insets for collectionview
-    
+    /*
     if ((int)[[UIScreen mainScreen] bounds].size.height == 480)
     {
         // This is iPhone 4/4s screen making up for difference of bottom tab bar
@@ -55,7 +55,7 @@
         // This is other iPhone
         [self.subRedditsTableView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, CGRectGetHeight(self.tabBarController.tabBar.frame), 0.0f)];
     }
-    
+    */
     // TODO set up these subreddits as user defaults then have add button to add more and delete option
     
     

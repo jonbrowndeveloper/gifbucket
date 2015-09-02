@@ -14,17 +14,14 @@
 #import "AppDelegate.h"
 #import "APActivityProvider.h"
 #import "DebugView.h"
-#import "ALInterstitialAd.h"
 #import "BucketViewController.h"
 #import "GifBucketIAPHelper.h"
 
 @interface BucketGIFImageViewController ()
 
-@property (nonatomic, strong) FLAnimatedImageView *gifImageView;
 @property (nonatomic, strong) FLAnimatedImage *image;
 @property (nonatomic, strong) __block NSArray *productsArray;
 @property (nonatomic, strong) NSString *tapToggle;
-@property (nonatomic, strong) ALInterstitialAd *interstitialAd;
 @property (nonatomic, strong) UIImageView *playButton;
 @property (nonatomic, strong) UIImageView *pauseButton;
 @property (nonatomic, strong) NSString *comingFromUnlimited;
@@ -33,7 +30,7 @@
 
 @implementation BucketGIFImageViewController
 
-@synthesize currentGIFImage, fileURL, filePath, freeGameButtonOutlet, removeAdsButtonOutlet, cachedAd;
+@synthesize currentGIFImage, fileURL, filePath, freeGameButtonOutlet, removeAdsButtonOutlet;
 
 - (NSManagedObjectContext *)managedObjectContext
 {
@@ -52,27 +49,43 @@
 {
     [super viewDidLoad];
     
+    // get some stuff ready before showing the gif image
+    
+    NSArray *arr = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+    NSURL *documentsUrl = [arr firstObject];
+    NSURL *fullURL = [documentsUrl URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.gif", currentGIFImage]];
+    
+    // display the animated image
+    
+    self.image = [[FLAnimatedImage alloc] initWithAnimatedGIFData:[NSData dataWithContentsOfURL:fullURL]];
+    self.gifImageView.animatedImage = self.image;
+    NSLog(@"gif image:%@", self.image);
+    
+    NSLog(@"width: %f\nheight: %f", self.gifImageView.frame.size.width, self.gifImageView.frame.size.width);
+    
+    self.gifImageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    self.gifImageView.userInteractionEnabled = YES;
+    
     // setup play and pause buttons
     
     UIImage *playImage = [UIImage imageNamed:@"Play-icon120.png"];
     self.playButton = [[UIImageView alloc] initWithImage:playImage];
     
-    // [self.view addSubview:self.playButton];
     self.playButton.hidden = YES;
     
     UIImage *pauseImage = [UIImage imageNamed:@"Pause-icon120.png"];
     self.pauseButton = [[UIImageView alloc] initWithImage:pauseImage];
     
-    // [self.view addSubview:self.pauseButton];
     self.pauseButton.hidden = YES;
     
-    // [self canRotate];
+    [self sizePauseAndPlay];
     
     // set timer to hide play button after 2 seconds
     
     self.tapToggle = @"0";
     
-    self.gifImageView = [[FLAnimatedImageView alloc] init];
+    // self.gifImageView = [[FLAnimatedImageView alloc] init];
 
     // tap recognizer for play/pause button on gif image view
     
@@ -88,46 +101,19 @@
     
     // buy and add button configue look / location
     
-    if ((int)[[UIScreen mainScreen] bounds].size.height == 480)
-    {
-        // This is iPhone 4/4s screen
-        NSLog(@"this is a smaller screen");
-        
-        CALayer *btnLayer = [freeGameButtonOutlet layer];
-        [btnLayer setMasksToBounds:YES];
-        [btnLayer setBorderWidth:1.0f];
-        [btnLayer setBorderColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1].CGColor];
-        [btnLayer setCornerRadius:8.0f];
-        
-        [freeGameButtonOutlet setFrame:CGRectMake(30.0, 317.0, 105.0, 36.0)];
-        
-        CALayer *btnLayer2 = [removeAdsButtonOutlet layer];
-        [btnLayer2 setMasksToBounds:YES];
-        [btnLayer2 setBorderWidth:1.0f];
-        [btnLayer2 setBorderColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1].CGColor];
-        [btnLayer2 setCornerRadius:8.0f];
-        
-        [removeAdsButtonOutlet setFrame:CGRectMake(190.0, 317.0, 105.0, 36.0)];
+    CALayer *btnLayer = [freeGameButtonOutlet layer];
+    [btnLayer setMasksToBounds:YES];
+    [btnLayer setBorderWidth:1.0f];
+    [btnLayer setBorderColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1].CGColor];
+    [btnLayer setCornerRadius:8.0f];
+    [btnLayer setBackgroundColor:[UIColor whiteColor].CGColor];
 
-    }
-    else
-    {
-        CALayer *btnLayer = [freeGameButtonOutlet layer];
-        [btnLayer setMasksToBounds:YES];
-        [btnLayer setBorderWidth:1.0f];
-        [btnLayer setBorderColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1].CGColor];
-        [btnLayer setCornerRadius:8.0f];
-        
-        [freeGameButtonOutlet setFrame:CGRectMake(30.0, 400.0, 105.0, 36.0)];
-
-        CALayer *btnLayer2 = [removeAdsButtonOutlet layer];
-        [btnLayer2 setMasksToBounds:YES];
-        [btnLayer2 setBorderWidth:1.0f];
-        [btnLayer2 setBorderColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1].CGColor];
-        [btnLayer2 setCornerRadius:8.0f];
-        
-        [removeAdsButtonOutlet setFrame:CGRectMake(190.0, 400.0, 105.0, 36.0)];
-    }
+    CALayer *btnLayer2 = [removeAdsButtonOutlet layer];
+    [btnLayer2 setMasksToBounds:YES];
+    [btnLayer2 setBorderWidth:1.0f];
+    [btnLayer2 setBorderColor:[UIColor colorWithRed:0.0/255.0 green:122.0/255.0 blue:255.0/255.0 alpha:1].CGColor];
+    [btnLayer2 setCornerRadius:8.0f];
+    [btnLayer2 setBackgroundColor:[UIColor whiteColor].CGColor];
     
     // get file path for deletion
     
@@ -174,6 +160,14 @@
     long numberOfImportsInteger = numberOfImports.integerValue;
     
     // detect device rotation
+    
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didRotate:)
+                                                 name:@"UIDeviceOrientationDidChangeNotification"
+                                               object:nil];
+    
+    
     if (i > 1 || [[NSUserDefaults standardUserDefaults] boolForKey:@"fromOlderVersion1.1"])
     {
         if(numberOfImportsInteger == 1 && ![[NSUserDefaults standardUserDefaults] boolForKey:@"helperShown"])
@@ -188,125 +182,6 @@
             [[NSUserDefaults standardUserDefaults] setBool:reviewNotice forKey:@"helperShown"];
         }
         
-        
-        NSLog(@"the app will now rotate things");
-        // start receiving device rotation notification
-        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-        
-        [[NSNotificationCenter defaultCenter] addObserverForName:UIDeviceOrientationDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
-         {
-             UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-             if (orientation == UIDeviceOrientationLandscapeLeft)
-             {
-                 if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isUnlimited"])
-                 {
-                     // [adView removeFromSuperview];
-                     removeAdsButtonOutlet.hidden = YES;
-                     freeGameButtonOutlet.hidden = YES;
-                     
-                 }
-                 
-                 // set new frame of imageview
-                 CGRect newFrame = CGRectMake([[UIScreen mainScreen] applicationFrame].origin.x, ([[UIScreen mainScreen] applicationFrame].origin.y)-2, 568.0,260.0);
-                 NSLog(@"Screen width:%f\nScreen height:%f",[[UIScreen mainScreen] applicationFrame].size.width,
-                       ([[UIScreen mainScreen] applicationFrame].size.height)-20);
-                 self.gifImageView.frame = newFrame;
-                 self.gifImageView.contentMode = UIViewContentModeScaleAspectFit;
-                 
-                 [self sizePauseAndPlay];
-                 
-                 // self.gifImageView.contentMode = UIDeviceOrientationLandscapeLeft;
-                 
-                 // self.debugView.imageView = self.gifImageView;
-                 self.gifImageView.userInteractionEnabled = YES;
-                 
-             }
-             else if(orientation == UIDeviceOrientationLandscapeRight)
-             {
-                 if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isUnlimited"])
-                 {
-                     // [adView removeFromSuperview];
-                     removeAdsButtonOutlet.hidden = YES;
-                     freeGameButtonOutlet.hidden = YES;
-                     
-                 }
-                 
-                 // set new frame of imageview
-                 CGRect newFrame = CGRectMake([[UIScreen mainScreen] applicationFrame].origin.x, ([[UIScreen mainScreen] applicationFrame].origin.y)-2, 568.0,260.0);
-                 NSLog(@"Screen width:%f\nScreen height:%f",[[UIScreen mainScreen] applicationFrame].size.width,
-                       [[UIScreen mainScreen] applicationFrame].size.height);
-                 self.gifImageView.frame = newFrame;
-                 self.gifImageView.contentMode = UIViewContentModeScaleAspectFit;
-                 
-                 [self sizePauseAndPlay];
-                 
-                 // self.gifImageView.contentMode = UIDeviceOrientationLandscapeRight;
-                 
-                 // self.debugView.imageView = self.gifImageView;
-                 self.gifImageView.userInteractionEnabled = YES;
-                 
-                 self.gifImageView.animatedImage = nil;
-                 self.gifImageView.animatedImage = self.image;
-             }
-             else if (orientation == UIDeviceOrientationPortrait)
-             {
-                 if ((int)[[UIScreen mainScreen] bounds].size.height == 480)
-                 {
-                     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isUnlimited"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"adsRemoved"])
-                     {
-                         CGRect newFrame = CGRectMake(0, 0, 320.0, 480.0);
-                         self.gifImageView.frame = newFrame;
-                         self.gifImageView.contentMode = UIViewContentModeScaleAspectFit;
-                         
-                         [self sizePauseAndPlay];
-                     }
-                     else
-                     {
-                         // [self.view addSubview:adView];
-                         removeAdsButtonOutlet.hidden = NO;
-                         freeGameButtonOutlet.hidden = NO;
-                         
-                         CGRect newFrame = CGRectMake(0, 30, 320.0, 320.0);
-                         self.gifImageView.frame = newFrame;
-                         self.gifImageView.contentMode = UIViewContentModeScaleAspectFit;
-                         
-                         [self sizePauseAndPlay];
-                     }
-                 }
-                 else
-                 {
-                     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isUnlimited"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"adsRemoved"])
-                     {
-                         CGRect newFrame = CGRectMake(0, -53, 320.0, 568.0);
-                         self.gifImageView.frame = newFrame;
-                         self.gifImageView.contentMode = UIViewContentModeScaleAspectFit;
-                         
-                         [self sizePauseAndPlay];
-                     }
-                     else
-                     {
-                         // [self.view addSubview:adView];
-                         removeAdsButtonOutlet.hidden = NO;
-                         freeGameButtonOutlet.hidden = NO;
-                         
-                         CGRect newFrame = CGRectMake(0, 70, 320.0, 320.0);
-                         self.gifImageView.frame = newFrame;
-                         self.gifImageView.contentMode = UIViewContentModeScaleAspectFit;
-                         
-                         [self sizePauseAndPlay];
-                         
-                         
-                     }
-                     // This is other iPhone
-
-
-                     self.gifImageView.userInteractionEnabled = YES;
-                     
-                 }
-                 
-             }
-             
-         }];
     }
     else
     {
@@ -357,7 +232,27 @@
     
 }
 
-
+- (void) didRotate:(NSNotification *)notification {
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    
+    switch (orientation) {
+        case UIDeviceOrientationPortrait:
+            [self sizePauseAndPlay];
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+            [self sizePauseAndPlay];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            [self sizePauseAndPlay];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            [self sizePauseAndPlay];
+            break;
+            
+        default:
+            break;
+    }
+}
 
 - (void)sizePauseAndPlay
 {
@@ -376,9 +271,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    
-
-    
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isUnlimited"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"adsRemoved"])
     {
         // [adView removeFromSuperview];
@@ -387,94 +279,11 @@
         
     }
     
-    [self.gifImageView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    // [self.gifImageView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     // show bottom toolbar
     
     [self.navigationController setToolbarHidden:NO animated:NO];
-    
-    // get some stuff ready before showing the gif image
-    
-    if (!self.gifImageView)
-    {
-        self.gifImageView = [[FLAnimatedImageView alloc] init];
-        // self.gifImageView.userInteractionEnabled = YES;
-    }
-    
-    // add gif image view to view controller
-    
-    [self.view addSubview:self.gifImageView];
-    
-    // setup location and size of gif image view
-    
-    if ((int)[[UIScreen mainScreen] bounds].size.height == 480)
-    {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isUnlimited"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"adsRemoved"])
-        {
-            CGRect newFrame = CGRectMake(0, 0, 320.0, 480.0);
-            self.gifImageView.frame = newFrame;
-            self.gifImageView.contentMode = UIViewContentModeScaleAspectFit;
-            
-            [self sizePauseAndPlay];
-        }
-        else
-        {
-            // [self.view addSubview:adView];
-            removeAdsButtonOutlet.hidden = NO;
-            freeGameButtonOutlet.hidden = NO;
-            
-            CGRect newFrame = CGRectMake(0, 30, 320.0, 320.0);
-            self.gifImageView.frame = newFrame;
-            self.gifImageView.contentMode = UIViewContentModeScaleAspectFit;
-            
-            [self sizePauseAndPlay];
-        }
-    }
-    else
-    {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isUnlimited"] || [[NSUserDefaults standardUserDefaults] boolForKey:@"adsRemoved"])
-        {
-            CGRect newFrame = CGRectMake(0, -53, 320.0, 568.0);
-            self.gifImageView.frame = newFrame;
-            self.gifImageView.contentMode = UIViewContentModeScaleAspectFit;
-            
-            [self sizePauseAndPlay];
-        }
-        else
-        {
-            // [self.view addSubview:adView];
-            removeAdsButtonOutlet.hidden = NO;
-            freeGameButtonOutlet.hidden = NO;
-            
-            CGRect newFrame = CGRectMake(0, 70, 320.0, 320.0);
-            self.gifImageView.frame = newFrame;
-            self.gifImageView.contentMode = UIViewContentModeScaleAspectFit;
-            
-            [self sizePauseAndPlay];
-            
-            
-        }
-        // This is other iPhone
-        
-        
-        self.gifImageView.userInteractionEnabled = YES;
-        
-    }
-    
-
-    NSArray *arr = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-    NSURL *documentsUrl = [arr firstObject];
-    NSURL *fullURL = [documentsUrl URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.gif", currentGIFImage]];
-
-    // display gif image
-
-    self.image = [[FLAnimatedImage alloc] initWithAnimatedGIFData:[NSData dataWithContentsOfURL:fullURL]];
-    self.gifImageView.animatedImage = self.image;
-    NSLog(@"gif image:%@", self.image);
-    
-    self.gifImageView.contentMode = UIViewContentModeScaleAspectFit;
-    
-    self.gifImageView.userInteractionEnabled = YES;
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isUnlimited"])
     {
@@ -653,23 +462,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 /*
-- (DebugView *)debugView
-{
-    if (!_debugView) {
-        _debugView = [[DebugView alloc] init];
-        _debugView.style = DebugViewStyleCondensed;
-    }
-    // [self.view.window makeKeyAndVisible];
-    [self.gifImageView addSubview:_debugView];
-    
-    CGRect frame = self.gifImageView.bounds;
-    frame.size.height = frame.size.height/1.55;
-    frame.size.width = frame.size.width/1.6;
-    _debugView.frame = frame;
-    
-    return _debugView;
-}*/
-/*
 - (void)initialHidePlayButton
 {
     [UIView animateWithDuration:1.0 animations:^(void){
@@ -738,6 +530,7 @@
     
     self.comingFromUnlimited = @"YES";
 }
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if ([self.comingFromUnlimited isEqualToString:@"YES"])

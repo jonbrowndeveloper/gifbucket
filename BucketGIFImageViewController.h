@@ -7,13 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ALAdView.h"
-#import "ALIncentivizedInterstitialAd.h"
-#import "ALAdRewardDelegate.h"
-#import "ALAdDisplayDelegate.h"
-#import "ALAdLoadDelegate.h"
 #import "AppsfireSDK.h"
 #import "AppsfireAdSDK.h"
+#import "FLAnimatedImageView.h"
 
 @interface BucketGIFImageViewController : UIViewController
 {
@@ -29,7 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *removeAdsButtonOutlet;
 - (IBAction)removeAdsButtonAction:(id)sender;
 
-@property (strong, nonatomic) ALAd *cachedAd;
 @property (assign, atomic, getter=isVideoAvailible) BOOL videoAvailible;
+
+@property (weak, nonatomic) IBOutlet FLAnimatedImageView *gifImageView;
 
 @end

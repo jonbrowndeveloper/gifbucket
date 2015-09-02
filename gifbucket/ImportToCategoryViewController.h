@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import "FLAnimatedImageView.h"
 
 @interface ImportToCategoryViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, NSURLConnectionDataDelegate, MFMailComposeViewControllerDelegate>
 {
@@ -18,11 +19,12 @@
 
 @property (nonatomic, strong) NSManagedObjectContext *importManagedObjectContext;
 
+@property (weak, nonatomic) IBOutlet UILabel *bytesLabel;
 
 - (IBAction)importButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *importButton;
 @property (weak, nonatomic) IBOutlet UIPickerView *categoryPicker;
-@property (strong, nonatomic) IBOutlet UIImageView *importedGIFImageView;
+@property (weak, nonatomic) IBOutlet FLAnimatedImageView *importedGIFImageView;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
 @property (nonatomic, retain) NSMutableDictionary *importCategories;
