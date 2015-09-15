@@ -493,12 +493,10 @@
     
     bytesLabel.text = [NSString stringWithFormat:@"%.02f/%lld MB", ((float)self.downloadMutableData.length/1000000),(self.urlResponse.expectedContentLength/1000000)];
     
-    // NSLog(@"%.0f%%", ((100.0/self.urlResponse.expectedContentLength)*self.downloadMutableData.length));
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    // NSLog(@"FINISHED");
     
     // Setup GIF file location and save
     
@@ -520,9 +518,6 @@
     self.importedGIFImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     image = nil;
-    
-    // theImageView.frame = CGRectMake(0.0, 0.0, 234.0, 204.0);
-    // [self.importedGIFImageView addSubview:theImageView];
     
     // clear up memory
     

@@ -18,7 +18,11 @@
 #import "ImportToCategoryViewController.h"
 #import "BucketGIFImageViewController.h"
 
+#define MainCell @"MainCell"
+
 @interface HomeViewController ()
+
+@property (nonatomic, strong) NSMutableDictionary *layoutInfo;
 
 @end
 
@@ -74,12 +78,14 @@
     // get number of sent gifs through campaign
     NSString *numberOfImports = [[NSUserDefaults standardUserDefaults] objectForKey:@"numberOfImports"];
     long imports = numberOfImports.integerValue;
+    
+    NSLog(@"imports: %ld", imports);
 
     if (imports !=0 && ![[NSUserDefaults standardUserDefaults] boolForKey:@"hitRemindMeLater"] && ![[NSUserDefaults standardUserDefaults] boolForKey:@"completedReview"])
     {
-        
+        NSLog(@"reviewing...");
     
-        if (imports == 7 || imports == 16 || imports == 25)
+        if (imports == 7 || imports == 14 || imports == 21)
         {
             reviewReminder = @"YES";
             
@@ -207,20 +213,6 @@
     
     else if (recentImages.count == 0 && categoryFetchArray.count != 0)
     {
-        /*
-        subredditHelpButtonOutlet.hidden = NO;
-        subredditHelpArrowImageView.alpha = 0.0;
-        searchWebHelpButtonOutlet.hidden = NO;
-        searchHelpArrowImageView.alpha = 0.0;
-        // searchHelpArrowImageView.hidden = NO;
-        importHelpButtonOutlet.hidden = NO;
-        importHelpArrowImageView.alpha = 0.0;
-        // importHelpArrowImageView.hidden = NO;
-        
-        subredditHelpArrowImageView.image = [UIImage imageNamed:@"gifbucket-uploadicon-flipped-blue60.png"];
-        searchHelpArrowImageView.image = [UIImage imageNamed:@"gifbucket-uploadicon-blue60.png"];
-        importHelpArrowImageView.image = [UIImage imageNamed:@"gifbucket-uploadicon-blue60.png"];
-        */
         
         
         gifBucketLogoImageView.alpha = 0.6;
@@ -265,21 +257,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    /*
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    NSLog(@"app delegate url = %@",[appDelegate receivedGIFURL]);
     
-    if ([appDelegate receivedGIFURL] != nil || [[NSUserDefaults standardUserDefaults] boolForKey:@"importingFromOtherApp"])
-    {
-        BOOL reviewNotice = NO;
-        [[NSUserDefaults standardUserDefaults] setBool:reviewNotice forKey:@"importingFromOtherApp"];
-        
-        NSLog(@"importing from another app");
-        
-        [self performSelector:@selector(barButtonImport:) withObject:self];
-    }
-    */
     
     reviewMessageSeen = @"NO";
     
@@ -368,17 +347,6 @@
     
     [self.view addGestureRecognizer:tap];
 }
-
-// may need to implement auto rotation at some point just for a single window
-// but it turns out to be buggy
-
-/*
-- (BOOL)shouldAutorotate { return NO; }
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}*/
 
 -(void)dismissKeyboard
 {
@@ -683,6 +651,8 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    NSLog(@"button index: %ld", (long)buttonIndex);
+    
     if(buttonIndex == 0 && [isCampaignMessage isEqualToString:@"YES"])
     {
         NSLog(@"campaign start");
@@ -712,7 +682,7 @@
         
         NSLog(@"'Maybe later' has been pressed");
     }
-    else if(buttonIndex == 2 && [reviewReminder isEqualToString:@"YES"])
+    else if(buttonIndex == 0 && [reviewReminder isEqualToString:@"YES"])
     {
         
         NSLog(@"i don't love gif bucket pressed");

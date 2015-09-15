@@ -67,8 +67,6 @@
 		9C2BC5B719ABB32C00AB8E63 /* BucketGIFImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2BC5B619ABB32C00AB8E63 /* BucketGIFImageViewController.m */; };
 		9C3BB08C19C0BFD4005DBCBC /* business-reddit-head-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3BB08A19C0BFD4005DBCBC /* business-reddit-head-small.png */; };
 		9C3BB08D19C0BFD4005DBCBC /* business-reddit-head-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C3BB08B19C0BFD4005DBCBC /* business-reddit-head-small@2x.png */; };
-		9C442CEE19B8DC1000C80524 /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C442CEB19B8DC1000C80524 /* FLAnimatedImage.m */; };
-		9C442CEF19B8DC1000C80524 /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C442CED19B8DC1000C80524 /* FLAnimatedImageView.m */; };
 		9C46E777197D85C9003FE14D /* BucketGifViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C46E776197D85C9003FE14D /* BucketGifViewController.m */; };
 		9C4FAECA1992A90C00D54427 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C4FAEC81992A90C00D54427 /* DataModel.xcdatamodeld */; };
 		9C5DAE6A19DF040B000F6CBB /* black-and-whiteThankYou.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9C5DAE6919DF040B000F6CBB /* black-and-whiteThankYou.gif */; };
@@ -109,6 +107,9 @@
 		9CF5D153197EA2BC0053435D /* BucketTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF5D152197EA2BC0053435D /* BucketTableViewCell.m */; };
 		9CFBEBC519C355690007C206 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CFBEBC319C355690007C206 /* Main.storyboard */; };
 		9CFBEBC919C366BD0007C206 /* butcket-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CFBEBC819C366BD0007C206 /* butcket-icon.png */; };
+		AA61A51D1B97571900CEEE5B /* GBCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA61A51C1B97571900CEEE5B /* GBCollectionViewCell.m */; };
+		AA61A5221B975CB100CEEE5B /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = AA61A51F1B975CB100CEEE5B /* FLAnimatedImage.m */; };
+		AA61A5231B975CB100CEEE5B /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA61A5211B975CB100CEEE5B /* FLAnimatedImageView.m */; };
 		AA9A41E91B967F54000A79F6 /* libAppsfireSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9A41E21B967F54000A79F6 /* libAppsfireSDK.a */; };
 /* End PBXBuildFile section */
 
@@ -203,10 +204,6 @@
 		9C2BC5B619ABB32C00AB8E63 /* BucketGIFImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BucketGIFImageViewController.m; path = ../BucketGIFImageViewController.m; sourceTree = "<group>"; };
 		9C3BB08A19C0BFD4005DBCBC /* business-reddit-head-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-reddit-head-small.png"; sourceTree = "<group>"; };
 		9C3BB08B19C0BFD4005DBCBC /* business-reddit-head-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "business-reddit-head-small@2x.png"; sourceTree = "<group>"; };
-		9C442CEA19B8DC1000C80524 /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImage.h; sourceTree = "<group>"; };
-		9C442CEB19B8DC1000C80524 /* FLAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImage.m; sourceTree = "<group>"; };
-		9C442CEC19B8DC1000C80524 /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
-		9C442CED19B8DC1000C80524 /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
 		9C46E775197D85C9003FE14D /* BucketGifViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BucketGifViewController.h; sourceTree = "<group>"; };
 		9C46E776197D85C9003FE14D /* BucketGifViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BucketGifViewController.m; sourceTree = "<group>"; };
 		9C4FAEC91992A90C00D54427 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -254,6 +251,12 @@
 		9CF5D152197EA2BC0053435D /* BucketTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BucketTableViewCell.m; sourceTree = "<group>"; };
 		9CFBEBC419C355690007C206 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CFBEBC819C366BD0007C206 /* butcket-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "butcket-icon.png"; path = "../butcket-icon.png"; sourceTree = "<group>"; };
+		AA61A51B1B97571900CEEE5B /* GBCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GBCollectionViewCell.h; path = gifbucket/GBCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		AA61A51C1B97571900CEEE5B /* GBCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GBCollectionViewCell.m; path = gifbucket/GBCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		AA61A51E1B975CB100CEEE5B /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImage.h; sourceTree = "<group>"; };
+		AA61A51F1B975CB100CEEE5B /* FLAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImage.m; sourceTree = "<group>"; };
+		AA61A5201B975CB100CEEE5B /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
+		AA61A5211B975CB100CEEE5B /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
 		AA9A41BE1B967A81000A79F6 /* libAppsfireSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAppsfireSDK.a; path = "gifbucket/appsfire-sdk/libAppsfireSDK.a"; sourceTree = "<group>"; };
 		AA9A41DA1B967F54000A79F6 /* AppsfireAdSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppsfireAdSDK.h; sourceTree = "<group>"; };
 		AA9A41DB1B967F54000A79F6 /* AppsfireEngageSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppsfireEngageSDK.h; sourceTree = "<group>"; };
@@ -481,12 +484,12 @@
 			children = (
 				293D26DE1A6DCCAF0030CD31 /* debug */,
 				295C1CFA1A0FF6390018E0FC /* prohibited.json */,
+				AA61A51E1B975CB100CEEE5B /* FLAnimatedImage.h */,
+				AA61A51F1B975CB100CEEE5B /* FLAnimatedImage.m */,
+				AA61A5201B975CB100CEEE5B /* FLAnimatedImageView.h */,
+				AA61A5211B975CB100CEEE5B /* FLAnimatedImageView.m */,
 				294130F219E0A97D00A88548 /* Reachability.h */,
 				294130F319E0A97D00A88548 /* Reachability.m */,
-				9C442CEA19B8DC1000C80524 /* FLAnimatedImage.h */,
-				9C442CEB19B8DC1000C80524 /* FLAnimatedImage.m */,
-				9C442CEC19B8DC1000C80524 /* FLAnimatedImageView.h */,
-				9C442CED19B8DC1000C80524 /* FLAnimatedImageView.m */,
 				29EE02C619C1608E000A43F2 /* SVProgressHUD.h */,
 				29EE02C719C1608E000A43F2 /* SVProgressHUD.m */,
 				2999EE5A19C6A22700A7B5C2 /* IAPHelper.h */,
@@ -506,6 +509,8 @@
 				9C5DAE7519DF2D1D000F6CBB /* GBGIFImage.m */,
 				9C5DAE7119DF2D11000F6CBB /* GBCategory.h */,
 				9C5DAE7219DF2D11000F6CBB /* GBCategory.m */,
+				AA61A51B1B97571900CEEE5B /* GBCollectionViewCell.h */,
+				AA61A51C1B97571900CEEE5B /* GBCollectionViewCell.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -754,23 +759,24 @@
 				9C4FAECA1992A90C00D54427 /* DataModel.xcdatamodeld in Sources */,
 				29622A8919D27BD000B2F26B /* RedditTableViewCell.m in Sources */,
 				9C5DAE7619DF2D1D000F6CBB /* GBGIFImage.m in Sources */,
+				AA61A5231B975CB100CEEE5B /* FLAnimatedImageView.m in Sources */,
 				9CF5D153197EA2BC0053435D /* BucketTableViewCell.m in Sources */,
 				9C46E777197D85C9003FE14D /* BucketGifViewController.m in Sources */,
 				2998B328194AA79C00477448 /* AppDelegate.m in Sources */,
 				2999EE6119C6A6E300A7B5C2 /* GifBucketIAPHelper.m in Sources */,
-				9C442CEF19B8DC1000C80524 /* FLAnimatedImageView.m in Sources */,
+				AA61A5221B975CB100CEEE5B /* FLAnimatedImage.m in Sources */,
 				29397BB019E2295B009D204E /* APActivityProvider.m in Sources */,
 				9CE33AA819AE649C00634D5E /* HomeSearchViewController.m in Sources */,
 				294130F419E0A97D00A88548 /* Reachability.m in Sources */,
 				9C13592F199000E600D1B2AF /* BucketCollectionViewCell.m in Sources */,
 				9C7DD6AD19DC800700A5B0D2 /* NewBucketTableViewCell.m in Sources */,
+				AA61A51D1B97571900CEEE5B /* GBCollectionViewCell.m in Sources */,
 				291C7DA919AD9803006D2058 /* HomeRedditWebViewController.m in Sources */,
 				2998B324194AA79C00477448 /* main.m in Sources */,
 				2999EE5C19C6A22700A7B5C2 /* IAPHelper.m in Sources */,
 				9CA0154F1981567E002DCC75 /* ImportToCategoryViewController.m in Sources */,
 				2999EE5919C698B600A7B5C2 /* NewBucketViewController.m in Sources */,
 				293D26E91A6DCCC00030CD31 /* DebugView.m in Sources */,
-				9C442CEE19B8DC1000C80524 /* FLAnimatedImage.m in Sources */,
 				29EE02C819C1608E000A43F2 /* SVProgressHUD.m in Sources */,
 				293D26ED1A6DCCC00030CD31 /* RSPlayPauseButton.m in Sources */,
 				9C2BC5B719ABB32C00AB8E63 /* BucketGIFImageViewController.m in Sources */,
@@ -917,7 +923,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Gif Bucket";
-				PROVISIONING_PROFILE = "a6428813-4248-4058-812f-4ae71f54475b";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -943,7 +949,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Gif Bucket";
-				PROVISIONING_PROFILE = "a6428813-4248-4058-812f-4ae71f54475b";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

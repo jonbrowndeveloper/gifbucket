@@ -21,7 +21,7 @@
 
 @implementation HomeSearchViewController
 
-@synthesize pulledURLString, recievedSearchQueryString, segueActivated, receivedArrayFull, receivedArrayReduced, searchCollectionView, searchString, downloadedString;
+@synthesize pulledURLString, recievedSearchQueryString, segueActivated, receivedArrayFull, receivedArrayReduced, searchCollectionView, searchString, downloadedString, cell;
 
 - (void)viewDidLoad
 {
@@ -144,10 +144,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    for (UICollectionViewCell *cell in [self.searchCollectionView visibleCells])
+    for (GBCollectionViewCell *gbCell in [self.searchCollectionView visibleCells])
     {
         // remove subviews from cells to free up memory
-        [cell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        [gbCell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
 }
 
@@ -162,23 +162,13 @@
     // return the number of gifs from the fetched results controller
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (GBCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
     [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"Loading... %ld of %lu", (long)indexPath.row, (unsigned long)receivedArrayFull.count]];
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"searchCell" forIndexPath:indexPath];
+    GBCollectionViewCell *gbCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"searchCell" forIndexPath:indexPath];
     
-    if (cell != nil) {
-        [cell.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    }
-    
-    // dismiss activity view as soon as all of the gifs have been loaded
-    /*
-    if (indexPath.row == receivedArrayFull.count) {
-        [SVProgressHUD dismiss];
-    }
-     */
     if (receivedArrayFull.count != 0 && [downloadedString isEqualToString:@"DONE"])
     {
         
@@ -186,49 +176,25 @@
         
         
          // download the image asynchronously
-         [self downloadImageWithURL:gifURL completionBlock:^(BOOL succeeded, FLAnimatedImageView *theImageView){
+         [self downloadImageWithURL:gifURL completionBlock:^(BOOL succeeded, FLAnimatedImage *theImage){
          if (succeeded)
          {
          // change the image of cell to GIF
-            [cell addSubview:theImageView];
+             
+             NSLog(@"the image: %@", theImage);
+            gbCell.imageView.animatedImage = theImage;
+            gbCell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            
             [SVProgressHUD dismiss];
          }
          }];
         
-        /*
-        // download the image asynchronously
-        [self downloadImageWithURL:gifURL completionBlock:^(BOOL succeeded, UIImage *image){
-            if (succeeded)
-            {
-                // change the image of cell to GIF
-                cell.backgroundColor = [UIColor colorWithPatternImage:image];
-                
-                
-            }
-        }];*/
     }
     
-    return cell;
+    return gbCell;
 }
-/*
-- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
-{
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               if ( !error )
-                               {
-                                   UIImage *image = [UIImage imageWithData:data];
-                                   completionBlock(YES,image);
-                               } else{
-                                   completionBlock(NO,nil);
-                               }
-                           }];
-}*/
 
-- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, FLAnimatedImageView *theImageView))completionBlock
+- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, FLAnimatedImage *theImage))completionBlock
 {
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -239,10 +205,7 @@
                                {
                                    
                                    FLAnimatedImage *image = [[FLAnimatedImage alloc] initWithAnimatedGIFData:data];
-                                   FLAnimatedImageView *theImageView = [[FLAnimatedImageView alloc] init];
-                                   theImageView.animatedImage = image;
-                                   theImageView.frame = CGRectMake(0.0, 0.0, 158.0, 158.0);
-                                   completionBlock(YES,theImageView);
+                                   completionBlock(YES,image);
                                } else{
                                    completionBlock(NO,nil);
                                }
@@ -266,9 +229,6 @@
     // set selected gif's url to clipboard and segue to import view
     
     searchString = receivedArrayFull[indexPath.row];
-    
-    // UIPasteboard *pasteboardCurrent = [UIPasteboard generalPasteboard];
-    // pasteboardCurrent.URL = url;
     
     [self performSegueWithIdentifier:@"fromSearchToImport" sender:self];
 }

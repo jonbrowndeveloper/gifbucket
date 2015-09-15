@@ -14,7 +14,7 @@
 }
 // core data
 @property (nonatomic, strong) NSManagedObjectContext *homeManagedObjectContext;
-@property (weak, nonatomic) IBOutlet UICollectionView *homeCollectionView;
+@property (strong, nonatomic) IBOutlet UICollectionView *homeCollectionView;
 
 // gif database arrays
 @property (strong, nonatomic) NSArray *recentImages;

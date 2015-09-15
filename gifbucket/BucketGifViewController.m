@@ -126,19 +126,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    /*
-    if ((int)[[UIScreen mainScreen] bounds].size.height == 480)
-    {
-        // This is iPhone 4/4s screen making up for difference of bottom tab bar
-        [self.bucketCollectionView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, (CGRectGetHeight(self.tabBarController.tabBar.frame) + 105.0), 0.0f)];
-        
-        
-    } else {
-        // This is other iPhone
-        [self.bucketCollectionView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, CGRectGetHeight(self.tabBarController.tabBar.frame), 0.0f)];
-    }*/
-    
-    // emptyLabel.frame = CGRectMake(150.0, 150.0, 20.0, 60.0);
     
     [[self fetchedResultsController] performFetch:nil];
     

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GBCollectionViewCell.h"
 
 @interface HomeSearchViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate>
 @property (strong, nonatomic) NSURL *pulledURLString;
@@ -17,6 +18,6 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *searchCollectionView;
 @property (strong, nonatomic) NSString *searchString;
 @property (strong, nonatomic) NSString *downloadedString;
-
+@property (weak, nonatomic) GBCollectionViewCell *cell;
 
 @end

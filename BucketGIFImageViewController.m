@@ -461,13 +461,6 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
-/*
-- (void)initialHidePlayButton
-{
-    [UIView animateWithDuration:1.0 animations:^(void){
-        self.debugView.alpha = 0.0f;
-    }];
-}*/
 
 - (void)imageTaped:(UIGestureRecognizer *)gestureRecognizer {
     if ([self.tapToggle isEqualToString:@"1"])
@@ -514,14 +507,6 @@
 
 - (IBAction)freeGameButton:(id)sender
 {
-    /*
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Would you like to remove Ads\nand support Gif Bucket?" message:@"\nSimply download 3 free apps and you remove all ads!" delegate:self cancelButtonTitle:@"Yes!" otherButtonTitles:@"Maybe Later...", nil];
-    alert.alertViewStyle = UIAlertViewStyleDefault;
-    NSLog(@"cancel button index: %ld", (long)[alert cancelButtonIndex]);
-    [alert show];
-    
-    self.comingFromUnlimited = @"NO";
-    */
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Remove Ads!?" message:@"\nGif Bucket unlimited removed all ads and allows you to store an unlimited number of gifs!" delegate:self cancelButtonTitle:@"YES!" otherButtonTitles:@"Maybe Later...", nil];
     alert.alertViewStyle = UIAlertViewStyleDefault;
@@ -610,49 +595,6 @@
     }
     
 }
-
-// APP LOVIN DELEGATE METHODS
-
-// LOAD DELEGATE METHODS
-/*
--(void)adService:(ALAdService *)adService didLoadAd:(ALAd *)ad
-{
-    cachedAd = ad;
-    [ALIncentivizedInterstitialAd showOver:[[UIApplication sharedApplication] keyWindow] andNotify:self];
-    NSLog(@"Ad loaded");
-}
-
--(void)adService:(ALAdService *)adService didFailToLoadAdWithError:(int)code
-{
-    NSLog(@"ad did not load error: %d", code);
-    [SVProgressHUD showErrorWithStatus:@"It looks like the add failed to download! Try again later."];
-}
-
-// REWARD DELEGATE METHODS
--(void) rewardValidationRequestForAd: (ALAd*) ad didSucceedWithResponse: (NSDictionary*) response
-{
-    NSLog(@"ad has finished and user has completed download");
-    [self checkAdCampaignStatus];
-    
-}
--(void) rewardValidationRequestForAd: (ALAd*) ad didExceedQuotaWithResponse: (NSDictionary*) response
-{
-    NSLog(@"Ad has exceeded quota");
-}
--(void) rewardValidationRequestForAd: (ALAd *) ad wasRejectedWithResponse: (NSDictionary*) response
-{
-    NSLog(@"Ad was rejected: %@", response);
-}
--(void) rewardValidationRequestForAd: (ALAd*) ad didFailWithError: (NSInteger) responseCode
-{
-    NSLog(@"failed validation with error: %ld", (long)responseCode);
-}
-
-- (void)showInterstitialAd
-{
-    // get adloader
-    [ALIncentivizedInterstitialAd preloadAndNotify:self];
-}*/
 
 // GIF BUCKET UNLIMITED
 - (IBAction)removeAdsButtonAction:(id)sender
