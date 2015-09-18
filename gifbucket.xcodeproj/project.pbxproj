@@ -923,7 +923,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Gif Bucket";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "eb2f829d-7b2f-434a-85dd-bd93b556895a";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -949,7 +949,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Gif Bucket";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "eb2f829d-7b2f-434a-85dd-bd93b556895a";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

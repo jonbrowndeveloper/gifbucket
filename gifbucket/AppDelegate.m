@@ -24,59 +24,9 @@
 @synthesize badLinks, prohibitedSearchWords;
 @synthesize isBeingCopied;
 
-/*
-// Find out who the current view controller is
-- (UIViewController*)topViewController {
-    // NSLog(@"we are in the 'top view controller method'");
-    return [self topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
-}
-// get the 'rootviewcontroller'
-- (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {
-    // NSLog(@"we are in the root view controller method");
-    if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-        UITabBarController* tabBarController = (UITabBarController*)rootViewController;
-        return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
-    } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
-        UINavigationController* navigationController = (UINavigationController*)rootViewController;
-        return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
-    } else if (rootViewController.presentedViewController) {
-        UIViewController* presentedViewController = rootViewController.presentedViewController;
-        return [self topViewControllerWithRootViewController:presentedViewController];
-    } else
-    {
-        return rootViewController;
-    }
-}
-
-// check to see if the selector 'canRotate' exists within the root view controller
-- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
-    // NSLog(@"we are in the current view controller method");
-    // Get topmost/visible view controller
-    
-    UIViewController *currentViewController = [self topViewController];
-    
-    if ([currentViewController isKindOfClass:[BucketGIFImageViewController class]])
-    {
-        // NSLog(@"user interface unlocked");
-        // Unlock landscape view orientations for this view controller
-        return UIInterfaceOrientationMaskAllButUpsideDown;
-    }
-    
-    // Only allow portrait (standard behaviour)
-    return UIInterfaceOrientationMaskPortrait;
-    
-}*/
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // start google install tracking support
-    
-    // [ACTConversionReporter reportWithConversionID:@"957960831" label:@"RVgzCMiXtlkQ_6TlyAM" value:@"0.03" isRepeatable:NO];
-    
-    // start AppLovin support
-    
-    // [ALSdk initializeSdk];
-    
     // Start AppsFire
     
     [AppsfireSDK connectWithSDKToken:@"F70AA9980F8A7E4BC66C79F0996EB9FB" secretKey:@"14bc4309bc2034531c70db5783abe480" features:AFSDKFeatureMonetization parameters:nil];
@@ -111,7 +61,7 @@
     // create user prefs
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"preferencesSet"]) {
         // set initial maximum number of buckets
-        NSString *numberOfBuckets = @"1";
+        NSString *numberOfBuckets = @"3";
         [[NSUserDefaults standardUserDefaults] setObject:numberOfBuckets forKey:@"maximumNumberOfBuckets"];
         
         // set bool for GIF Bucket Ultimate
@@ -245,10 +195,33 @@
     
 
     
-    #if TARGET_IPHONE_SIMULATOR
-    // where is the iphone simulator path
-    // NSLog(@"Documents Directory: %@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
-    #endif
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"update4PreferencesSet"])
+    {
+        // increase number of buckets by 5
+        NSString *maximumNumberOfBuckets = [[NSUserDefaults standardUserDefaults] objectForKey:@"maximumNumberOfBuckets"];
+        NSLog(@"current maximum: %@", maximumNumberOfBuckets);
+        long i = maximumNumberOfBuckets.integerValue;
+
+        if (i < 3)
+        {
+            i = 3;
+            
+            NSString *newMaximumNumberOfBuckets = [NSString stringWithFormat:@"%ld", i];
+            NSLog(@"new maximum: %@", newMaximumNumberOfBuckets);
+            
+            [[NSUserDefaults standardUserDefaults] setObject:newMaximumNumberOfBuckets forKey:@"maximumNumberOfBuckets"];
+            
+        }
+        
+        
+        // set user prefs bool
+        BOOL prefs = YES;
+        [[NSUserDefaults standardUserDefaults] setBool:prefs forKey:@"update4PreferencesSet"];
+        
+        NSLog(@"User Update 4 Preferences Set");
+        
+    }
+    
     
     badLinks = [NSArray arrayWithObjects:@"placeholder", nil];
     

@@ -443,7 +443,7 @@
         else if ([[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstTime"])
         {
             titleString = @"Thank you for choosing \nGif Bucket";
-            messageString = @"Store all your gifs in buckets.\nYou get one bucket free!";
+            messageString = @"Store all your gifs in buckets.\nYou get three buckets free!";
             placeholderString = @"Name your first bucket";
         }
         

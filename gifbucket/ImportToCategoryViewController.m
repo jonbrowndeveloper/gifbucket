@@ -201,6 +201,7 @@
     // check to see if the gif is already there and downloaded
     if (fileExists)
     {
+        /*
         FLAnimatedImage *image = [[FLAnimatedImage alloc] initWithAnimatedGIFData:[NSData dataWithContentsOfFile:importGIFPath]];
         FLAnimatedImageView *theImageView = [[FLAnimatedImageView alloc] init];
         theImageView.animatedImage = image;
@@ -209,6 +210,7 @@
         
         theImageView.frame = CGRectMake(0.0, 0.0, 234.0, 204.0);
         [self.importedGIFImageView addSubview:theImageView];
+         */
     }
     else if (![quickDownloadString isEqualToString:@"placeholder"] && quickDownloadString != nil) {
         NSLog(@"urlstring: %@", urlDownloadString);
